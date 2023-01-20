@@ -25,8 +25,8 @@ public class CamLook : MonoBehaviour
     }
     public void SecondPos() 
     {
-        Vector3 pos = new Vector3(secondPoint.transform.position.x, transform.position.y, secondPoint.transform.position.z - 1);
+        Vector3 pos = new Vector3(secondPoint.transform.position.x - 0.5f, transform.position.y, secondPoint.transform.position.z - 1);
         transform.DOMove(pos, 2).SetEase(Ease.Linear);
-        transform.DORotate(new Vector3(45, 0, 0), 2).SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(45, 25, 0), 2).SetEase(Ease.Linear);
     }
 }
