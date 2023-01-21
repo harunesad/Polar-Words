@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class WordsSelectState : WordsBaseState
 {
+    CamLook camLook;
     public override void EnterState(WordsStateManager words)
     {
-        
+        camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
     }
 
     public override void UpdateState(WordsStateManager words)
@@ -20,15 +21,18 @@ public class WordsSelectState : WordsBaseState
             {
                 if (hit.transform.GetComponent<Renderer>().material.color == new Color(1,1,1,1))
                 {
+                    //GameObject.Destroy(hit.transform.gameObject);
                     hit.transform.GetComponent<Renderer>().material.color = Color.green;
+                    Debug.Log(hit.transform.GetComponent<Renderer>().material.color);
 
                     Transform canvas = hit.transform.GetChild(0);
                     TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
                     words.ýnputWord.text = words.ýnputWord.text + letter.text;
 
+                    Debug.Log(words.ýnputWord.text);
                     words.words.Add(hit.transform.gameObject);
                 }
-                else
+                if(hit.transform.GetComponent<Renderer>().material.color != new Color(1, 1, 1, 1) && camLook.enabled == false)
                 {
                     hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
 
@@ -54,7 +58,8 @@ public class WordsSelectState : WordsBaseState
         }
         if (words.ýnputWord.text == words.keyWord)
         {
-            words.SwitchState(words.fillingState);
+            camLook.enabled = true;
+            //words.SwitchState(words.fillingState);
         }
     }
 }

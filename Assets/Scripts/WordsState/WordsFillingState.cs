@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WordsFillingState : WordsBaseState
 {
+    int index;
     public override void EnterState(WordsStateManager words)
     {
-        CamLook.cam.SecondPos();
+        //CamLook.cam.SecondPos();
+        GameObject hextileIce = words.words[index].transform.GetChild(1).gameObject;
+        hextileIce.transform.DOMoveY(0.1f, 1).SetEase(Ease.Linear).OnComplete(
+            () => 
+            {
+                index++;
+                if (index == words.words.Count - 1)
+                {
+                    words.SwitchState(words.moveState);
+                }
+                words.SwitchState(words.fillingState);
+            });
     }
 
     public override void UpdateState(WordsStateManager words)

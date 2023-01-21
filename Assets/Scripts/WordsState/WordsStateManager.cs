@@ -12,9 +12,10 @@ public class WordsStateManager : MonoBehaviour
     public List<GameObject> words;
     public List<string> myWord;
 
-    WordsBaseState currentState;
+    public WordsBaseState currentState;
     public WordsSelectState selectState = new WordsSelectState();
     public WordsFillingState fillingState = new WordsFillingState();
+    public CharacterMoveState moveState = new CharacterMoveState();
     private void Awake()
     {
         wordsState = this;

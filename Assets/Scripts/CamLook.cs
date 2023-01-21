@@ -13,7 +13,7 @@ public class CamLook : MonoBehaviour
     }
     void Start()
     {
-        //SecondPos();
+        SecondPos();
     }
     void Update()
     {
@@ -27,6 +27,12 @@ public class CamLook : MonoBehaviour
     {
         Vector3 pos = new Vector3(secondPoint.transform.position.x - 0.5f, transform.position.y, secondPoint.transform.position.z - 1);
         transform.DOMove(pos, 2).SetEase(Ease.Linear);
-        transform.DORotate(new Vector3(45, 25, 0), 2).SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(45, 25, 0), 2).SetEase(Ease.Linear).OnComplete(
+            () =>
+            {
+                WordsStateManager wordsState = FindObjectOfType<WordsStateManager>();
+                wordsState.SwitchState(wordsState.fillingState);
+                this.enabled = false;
+            });
     }
 }
