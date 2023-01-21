@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class DeleteButton : MonoBehaviour
 {
     public Button delete;
+    CamLook camLook;
+    WordsStateManager wordsState;
     void Start()
     {
-        
+        camLook = FindObjectOfType<CamLook>();
+        wordsState = FindObjectOfType<WordsStateManager>();
     }
     void Update()
     {
@@ -16,10 +19,13 @@ public class DeleteButton : MonoBehaviour
     }
     public void DeleteWord()
     {
-        for (int i = 0; i < WordsStateManager.wordsState.words.Count; i++)
+        if (camLook.enabled == false && wordsState.currentState == wordsState.selectState)
         {
-            WordsStateManager.wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+            for (int i = 0; i < WordsStateManager.wordsState.words.Count; i++)
+            {
+                WordsStateManager.wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+            }
+            WordsStateManager.wordsState.ýnputWord.text = "";
         }
-        WordsStateManager.wordsState.ýnputWord.text = "";
     }
 }

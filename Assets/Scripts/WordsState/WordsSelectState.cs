@@ -23,36 +23,37 @@ public class WordsSelectState : WordsBaseState
                 {
                     //GameObject.Destroy(hit.transform.gameObject);
                     hit.transform.GetComponent<Renderer>().material.color = Color.green;
-                    Debug.Log(hit.transform.GetComponent<Renderer>().material.color);
 
                     Transform canvas = hit.transform.GetChild(0);
                     TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
                     words.ýnputWord.text = words.ýnputWord.text + letter.text;
 
-                    Debug.Log(words.ýnputWord.text);
                     words.words.Add(hit.transform.gameObject);
                 }
-                if(hit.transform.GetComponent<Renderer>().material.color != new Color(1, 1, 1, 1) && camLook.enabled == false)
+                else
                 {
-                    hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
-
-                    Transform canvas = hit.transform.GetChild(0);
-                    TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
-                    var word = words.ýnputWord.text.ToCharArray();
-
-                    for (int i = 0; i < word.Length; i++)
+                    if (camLook.enabled == false)
                     {
-                        words.myWord.Add(word[i].ToString());
-                    }
+                        hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
 
-                    words.myWord.Remove(letter.text.ToString());
-                    words.ýnputWord.text = "";
+                        Transform canvas = hit.transform.GetChild(0);
+                        TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
+                        var word = words.ýnputWord.text.ToCharArray();
 
-                    for (int i = 0; i < words.myWord.Count; i++)
-                    {
-                        words.ýnputWord.text = words.ýnputWord.text + words.myWord[i];
+                        for (int i = 0; i < word.Length; i++)
+                        {
+                            words.myWord.Add(word[i].ToString());
+                        }
+
+                        words.myWord.Remove(letter.text.ToString());
+                        words.ýnputWord.text = "";
+
+                        for (int i = 0; i < words.myWord.Count; i++)
+                        {
+                            words.ýnputWord.text = words.ýnputWord.text + words.myWord[i];
+                        }
+                        words.myWord.Clear();
                     }
-                    words.myWord.Clear();
                 }
             }
         }
