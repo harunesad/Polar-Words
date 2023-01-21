@@ -53,6 +53,7 @@ public class WordsSelectState : WordsBaseState
                             words.ýnputWord.text = words.ýnputWord.text + words.myWord[i];
                         }
                         words.myWord.Clear();
+                        words.words.Remove(hit.transform.gameObject);
                     }
                 }
             }
