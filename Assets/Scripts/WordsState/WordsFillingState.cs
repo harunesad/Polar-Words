@@ -11,7 +11,7 @@ public class WordsFillingState : WordsBaseState
         //CamLook.cam.SecondPos();
         GameObject hextileIce = words.words[index].transform.GetChild(1).gameObject;
         hextileIce.GetComponent<Animator>().SetTrigger("Wave");
-        hextileIce.transform.DOMoveY(0.1f, 0.75f).SetEase(Ease.Linear).OnComplete(
+        hextileIce.transform.DOMoveY(0.05f, 0.75f).SetEase(Ease.Linear).OnComplete(
             () => 
             {
                 index++;
