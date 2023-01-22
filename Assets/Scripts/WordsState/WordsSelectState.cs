@@ -21,7 +21,6 @@ public class WordsSelectState : WordsBaseState
             {
                 if (hit.transform.GetComponent<Renderer>().material.color == new Color(1,1,1,1))
                 {
-                    //GameObject.Destroy(hit.transform.gameObject);
                     hit.transform.GetComponent<Renderer>().material.color = Color.green;
 
                     Transform canvas = hit.transform.GetChild(0);
@@ -61,7 +60,6 @@ public class WordsSelectState : WordsBaseState
         if (words.ýnputWord.text == words.keyWord)
         {
             camLook.enabled = true;
-            //words.SwitchState(words.fillingState);
         }
     }
 }

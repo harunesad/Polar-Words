@@ -8,7 +8,6 @@ public class WordsFillingState : WordsBaseState
     int index;
     public override void EnterState(WordsStateManager words)
     {
-        //CamLook.cam.SecondPos();
         GameObject hextileIce = words.words[index].transform.GetChild(1).gameObject;
         hextileIce.GetComponent<Animator>().SetTrigger("Wave");
         hextileIce.transform.DOMoveY(0.05f, 0.75f).SetEase(Ease.Linear).OnComplete(
@@ -19,6 +18,7 @@ public class WordsFillingState : WordsBaseState
                 {
                     words.SwitchState(words.moveState);
                 }
+                Navmesh.navmesh.NavmeshSurface();
                 words.SwitchState(words.fillingState);
             });
     }
