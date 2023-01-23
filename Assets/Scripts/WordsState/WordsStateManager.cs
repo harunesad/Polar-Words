@@ -6,7 +6,7 @@ using TMPro;
 public class WordsStateManager : MonoBehaviour
 {
     public static WordsStateManager wordsState;
-    public LayerMask mask;
+    public LayerMask wordMask, groundMask;
     public TextMeshProUGUI ýnputWord;
     public string keyWord;
     public List<GameObject> words;

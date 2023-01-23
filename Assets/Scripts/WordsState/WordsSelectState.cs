@@ -17,7 +17,7 @@ public class WordsSelectState : WordsBaseState
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.mask))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.wordMask))
             {
                 if (hit.transform.GetComponent<Renderer>().material.color == new Color(1,1,1,1))
                 {

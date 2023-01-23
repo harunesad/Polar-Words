@@ -14,17 +14,20 @@ public class WordsFillingState : WordsBaseState
             () => 
             {
                 index++;
-                if (index == words.words.Count - 1)
+                if (index == words.words.Count)
                 {
                     words.SwitchState(words.moveState);
                 }
-                Navmesh.navmesh.NavmeshSurface();
-                words.SwitchState(words.fillingState);
+                else
+                {
+                    Navmesh.navmesh.NavmeshSurface();
+                    words.SwitchState(words.fillingState);
+                }
             });
     }
 
     public override void UpdateState(WordsStateManager words)
     {
-        
+        Debug.Log(words.currentState);
     }
 }
