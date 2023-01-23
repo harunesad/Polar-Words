@@ -26,6 +26,7 @@ public class DeleteButton : MonoBehaviour
                 WordsStateManager.wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
             }
             WordsStateManager.wordsState.ýnputWord.text = "";
+            WordsStateManager.wordsState.words.Clear();
         }
     }
 }

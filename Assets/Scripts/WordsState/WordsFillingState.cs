@@ -16,6 +16,7 @@ public class WordsFillingState : WordsBaseState
                 index++;
                 if (index == words.words.Count)
                 {
+                    Navmesh.navmesh.NavmeshSurface();
                     words.SwitchState(words.moveState);
                 }
                 else
@@ -28,6 +29,6 @@ public class WordsFillingState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
-        Debug.Log(words.currentState);
+        
     }
 }

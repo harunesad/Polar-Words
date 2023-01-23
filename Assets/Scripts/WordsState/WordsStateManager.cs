@@ -11,11 +11,13 @@ public class WordsStateManager : MonoBehaviour
     public string keyWord;
     public List<GameObject> words;
     public List<string> myWord;
+    public GameObject ground;
 
     public WordsBaseState currentState;
     public WordsSelectState selectState = new WordsSelectState();
     public WordsFillingState fillingState = new WordsFillingState();
     public CharacterMoveState moveState = new CharacterMoveState();
+    public WordsClearState clearState = new WordsClearState();
     private void Awake()
     {
         wordsState = this;
