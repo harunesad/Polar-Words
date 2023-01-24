@@ -34,6 +34,7 @@ public class CharacterMoveState : WordsBaseState
         {
             //polar.AddComponent<PolarCollision>();
             words.ground.layer = 7;
+            words.ground.transform.parent.gameObject.layer = 3;
             words.SwitchState(words.clearState);
             //words.ground = collision.gameObject;
         }
