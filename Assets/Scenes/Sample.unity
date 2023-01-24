@@ -693,8 +693,16 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  wordSelectMask:
+    serializedVersion: 2
+    m_Bits: 512
   "\u0131nputWord": {fileID: 27054093}
-  keyWord: POLAR
+  keyWord:
+  - POLAR
+  - BLACK
+  - EYE
+  - ROSE
+  - OLA
   words: []
   myWord: []
   ground: {fileID: 0}
@@ -2742,7 +2750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_Name
-      value: hextilewordground
+      value: StartHextile
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_Layer
@@ -4348,7 +4356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword (6)
+      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Layer
@@ -10323,7 +10331,7 @@ GameObject:
   - component: {fileID: 1421551294}
   - component: {fileID: 1421551293}
   m_Layer: 0
-  m_Name: DeleteButton
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10341,7 +10349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3ffe88177c9034aad1149ace4dd70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delete: {fileID: 269714563}
 --- !u!4 &1421551294
 Transform:
   m_ObjectHideFlags: 0
@@ -13480,7 +13487,7 @@ GameObject:
   - component: {fileID: 1817900745}
   - component: {fileID: 1817900744}
   m_Layer: 5
-  m_Name: Order
+  m_Name: Answer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13551,8 +13558,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1421551293}
-        m_TargetAssemblyTypeName: DeleteButton, Assembly-CSharp
-        m_MethodName: DeleteWord
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: Answer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13711,7 +13718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword
+      value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_IsActive
@@ -14819,7 +14826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_Name
-      value: hextilewordground
+      value: FinishHextile
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_Layer

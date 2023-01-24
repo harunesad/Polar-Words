@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeleteButton : MonoBehaviour
+public class Button : MonoBehaviour
 {
-    public Button delete;
+    //public Button delete;
     CamLook camLook;
-    WordsStateManager wordsState;
+    //WordsStateManager wordsState;
     void Start()
     {
         camLook = FindObjectOfType<CamLook>();
-        wordsState = FindObjectOfType<WordsStateManager>();
+        //wordsState = FindObjectOfType<WordsStateManager>();
     }
     void Update()
     {
@@ -19,7 +19,7 @@ public class DeleteButton : MonoBehaviour
     }
     public void DeleteWord()
     {
-        if (camLook.enabled == false && wordsState.currentState == wordsState.selectState)
+        if (camLook.enabled == false && WordsStateManager.wordsState.currentState == WordsStateManager.wordsState.selectState)
         {
             for (int i = 0; i < WordsStateManager.wordsState.words.Count; i++)
             {
@@ -27,6 +27,16 @@ public class DeleteButton : MonoBehaviour
             }
             WordsStateManager.wordsState.ýnputWord.text = "";
             WordsStateManager.wordsState.words.Clear();
+        }
+    }
+    public void Answer()
+    {
+        for (int i = 0; i < WordsStateManager.wordsState.keyWord.Count; i++)
+        {
+            if (WordsStateManager.wordsState.ýnputWord.text == WordsStateManager.wordsState.keyWord[i])
+            {
+                camLook.enabled = true;
+            }
         }
     }
 }

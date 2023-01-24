@@ -6,12 +6,13 @@ using TMPro;
 public class WordsStateManager : MonoBehaviour
 {
     public static WordsStateManager wordsState;
-    public LayerMask wordMask, groundMask;
+    public LayerMask wordMask, groundMask, wordSelectMask;
     public TextMeshProUGUI ýnputWord;
-    public string keyWord;
+    public List<string> keyWord;
     public List<GameObject> words;
     public List<string> myWord;
     public GameObject ground;
+    public GameObject finishGround;
 
     public WordsBaseState currentState;
     public WordsSelectState selectState = new WordsSelectState();
@@ -21,6 +22,7 @@ public class WordsStateManager : MonoBehaviour
     private void Awake()
     {
         wordsState = this;
+        finishGround = GameObject.Find("FinishHextile");
     }
     void Start()
     {

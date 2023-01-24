@@ -17,6 +17,7 @@ public class WordsFillingState : WordsBaseState
                 if (index == words.words.Count)
                 {
                     Navmesh.navmesh.NavmeshSurface();
+                    index = 0;
                     words.SwitchState(words.moveState);
                 }
                 else

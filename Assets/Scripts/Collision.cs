@@ -6,7 +6,10 @@ public class Collision : MonoBehaviour
 {
     private void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        gameObject.layer = collision.gameObject.layer;
-        Destroy(this);
+        if (gameObject.layer == 7 && WordsStateManager.wordsState.currentState == WordsStateManager.wordsState.fillingState)
+        {
+            gameObject.layer = collision.gameObject.layer;
+        }
+        //Destroy(this);
     }
 }

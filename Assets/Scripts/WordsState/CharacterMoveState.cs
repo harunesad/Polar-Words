@@ -10,6 +10,7 @@ public class CharacterMoveState : WordsBaseState
     Vector3 point;
     public override void EnterState(WordsStateManager words)
     {
+        point = Vector3.zero;
         polar = GameObject.Find("Polar");
         agent = polar.GetComponent<NavMeshAgent>();
         agent.isStopped = true;
@@ -21,19 +22,23 @@ public class CharacterMoveState : WordsBaseState
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
+            for (int i = 0; i < words.words.Count; i++)
             {
-                point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                agent.SetDestination(point);
-                agent.isStopped = false;
-                //Debug.Log(point);
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask) && hit.transform.parent.gameObject == words.words[i])
+                {
+                    words.ground.layer = 0;
+                    point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                    agent.SetDestination(point);
+                    agent.isStopped = false;
+                    Debug.Log(point);
+                }
             }
         }
         //Debug.Log(Vector3.Distance(polar.transform.position, point));
         if (Vector3.Distance(polar.transform.position, point) < 0.1f)
         {
             //polar.AddComponent<PolarCollision>();
-            words.ground.layer = 7;
+            //words.ground.layer = 7;
             words.ground.transform.parent.gameObject.layer = 3;
             words.SwitchState(words.clearState);
             //words.ground = collision.gameObject;
