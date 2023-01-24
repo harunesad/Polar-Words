@@ -26,7 +26,17 @@ public class Button : MonoBehaviour
                 WordsStateManager.wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
             }
             WordsStateManager.wordsState.ýnputWord.text = "";
-            WordsStateManager.wordsState.words.Clear();
+            for (int i = 0; i < WordsStateManager.wordsState.words.Count; i++)
+            {
+                WordsStateManager.wordsState.words[i].layer = 3;
+                if (WordsStateManager.wordsState.ground.transform.parent.name != WordsStateManager.wordsState.words[i].name)
+                {
+                    Debug.Log("aaaa");
+                    WordsStateManager.wordsState.words.RemoveAt(i);
+                    i--;
+                }
+            }
+            //WordsStateManager.wordsState.words.Clear();
         }
     }
     public void Answer()

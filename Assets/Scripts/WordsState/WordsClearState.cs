@@ -11,18 +11,12 @@ public class WordsClearState : WordsBaseState
     {
         camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
 
-        if (words.words.Count == 1)
+        if (words.words[index] == words.ground.transform.parent.gameObject)
         {
-            index = 0;
-            words.ýnputWord.text = "";
-            words.ground.transform.parent.gameObject.layer = 0;
-            words.finishGround.layer = 7;
-            camLook.enabled = true;
-        }
-        if (words.words[index].transform.GetChild(1).gameObject == words.ground)
-        {
+            //index = 0;
             words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
             index++;
+            Debug.Log(index);
             words.SwitchState(words.clearState);
         }
         else
@@ -37,7 +31,20 @@ public class WordsClearState : WordsBaseState
                 {
                     Navmesh.navmesh.NavmeshSurface();
                     words.words.RemoveAt(index);
-                    words.SwitchState(words.clearState);
+                    if (words.words.Count == 1)
+                    {
+                        index = 0;
+                        words.ýnputWord.text = "";
+                        words.ground.transform.parent.gameObject.layer = 0;
+                        words.finishGround.layer = 7;
+                        camLook.enabled = true;
+                        //Debug.Log(index);
+                        //Time.timeScale = 0;
+                    }
+                    else
+                    {
+                        words.SwitchState(words.clearState);
+                    }
                 });
         }
     }
