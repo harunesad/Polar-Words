@@ -706,6 +706,7 @@ MonoBehaviour:
   words: []
   myWord: []
   ground: {fileID: 0}
+  finishGround: {fileID: 0}
 --- !u!4 &53397073
 Transform:
   m_ObjectHideFlags: 0
@@ -3651,7 +3652,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.016666668
+  m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
 --- !u!4 &373910664
@@ -12760,7 +12761,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.016666668
+  m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 38e15811481a17a46a232149bdb2562b, type: 2}
 --- !u!1001 &1773512406
