@@ -25,12 +25,12 @@ public class CharacterMoveState : WordsBaseState
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             for (int i = 0; i < words.words.Count; i++)
             {
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask) && hit.transform.parent.gameObject == words.words[i])
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
                 {
-                    if (words.ground.transform.name == "StartHextile")
-                    {
-                        words.ground.layer = 0;
-                    }
+                    //if (words.ground.transform.name == "StartHextile")
+                    //{
+                    //    words.ground.layer = 0;
+                    //}
                     point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                     agent.SetDestination(point);
                     agent.isStopped = false;

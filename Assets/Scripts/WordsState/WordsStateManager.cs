@@ -23,6 +23,7 @@ public class WordsStateManager : MonoBehaviour
     {
         wordsState = this;
         finishGround = GameObject.Find("FinishHextile");
+        words.Add(finishGround.transform.parent.gameObject);
     }
     void Start()
     {

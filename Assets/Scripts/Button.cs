@@ -7,11 +7,11 @@ public class Button : MonoBehaviour
 {
     //public Button delete;
     CamLook camLook;
-    //WordsStateManager wordsState;
+    WordsStateManager wordsState;
     void Start()
     {
         camLook = FindObjectOfType<CamLook>();
-        //wordsState = FindObjectOfType<WordsStateManager>();
+        wordsState = FindObjectOfType<WordsStateManager>();
     }
     void Update()
     {
@@ -19,20 +19,20 @@ public class Button : MonoBehaviour
     }
     public void DeleteWord()
     {
-        if (camLook.enabled == false && WordsStateManager.wordsState.currentState == WordsStateManager.wordsState.selectState)
+        if (camLook.enabled == false && wordsState.currentState == wordsState.selectState)
         {
-            for (int i = 0; i < WordsStateManager.wordsState.words.Count; i++)
+            for (int i = 0; i < wordsState.words.Count; i++)
             {
-                WordsStateManager.wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+                wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
             }
-            WordsStateManager.wordsState.ýnputWord.text = "";
-            for (int i = 0; i < WordsStateManager.wordsState.words.Count; i++)
+            wordsState.ýnputWord.text = "";
+            for (int i = 0; i < wordsState.words.Count; i++)
             {
-                WordsStateManager.wordsState.words[i].layer = 3;
-                if (WordsStateManager.wordsState.ground.transform.parent.name != WordsStateManager.wordsState.words[i].name)
+                wordsState.words[i].layer = 3;
+                if (wordsState.ground.transform.parent.gameObject != wordsState.words[i] && wordsState.finishGround.transform.parent.gameObject != wordsState.words[i])
                 {
                     Debug.Log("aaaa");
-                    WordsStateManager.wordsState.words.RemoveAt(i);
+                    wordsState.words.RemoveAt(i);
                     i--;
                 }
             }
@@ -41,9 +41,9 @@ public class Button : MonoBehaviour
     }
     public void Answer()
     {
-        for (int i = 0; i < WordsStateManager.wordsState.keyWord.Count; i++)
+        for (int i = 0; i < wordsState.keyWord.Count; i++)
         {
-            if (WordsStateManager.wordsState.ýnputWord.text == WordsStateManager.wordsState.keyWord[i])
+            if (wordsState.ýnputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
             {
                 camLook.enabled = true;
             }
