@@ -23,23 +23,6 @@ public class CamLook : MonoBehaviour
         {
             FirstPos();
         }
-        Debug.Log(wordsState.currentState);
-    }
-    //void Start()
-    //{
-    //    if (wordsState.currentState == wordsState.selectState)
-    //    {
-    //        SecondPos();
-    //    }
-    //    if (wordsState.currentState == wordsState.clearState)
-    //    {
-    //        FirstPos();
-    //    }
-    //    Debug.Log(wordsState.currentState);
-    //}
-    void Update()
-    {
-        //transform.Translate(Vector3.forward * Time.deltaTime * 3);
     }
     public void FirstPos()
     {

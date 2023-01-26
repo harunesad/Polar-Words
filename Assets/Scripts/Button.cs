@@ -5,17 +5,12 @@ using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
-    //public Button delete;
     CamLook camLook;
     WordsStateManager wordsState;
     void Start()
     {
         camLook = FindObjectOfType<CamLook>();
         wordsState = FindObjectOfType<WordsStateManager>();
-    }
-    void Update()
-    {
-        
     }
     public void DeleteWord()
     {
@@ -28,15 +23,13 @@ public class Button : MonoBehaviour
             wordsState.ýnputWord.text = "";
             for (int i = 0; i < wordsState.words.Count; i++)
             {
-                wordsState.words[i].layer = 3;
                 if (wordsState.ground.transform.parent.gameObject != wordsState.words[i] && wordsState.finishGround.transform.parent.gameObject != wordsState.words[i])
                 {
-                    Debug.Log("aaaa");
+                    wordsState.words[i].layer = 3;
                     wordsState.words.RemoveAt(i);
                     i--;
                 }
             }
-            //WordsStateManager.wordsState.words.Clear();
         }
     }
     public void Answer()

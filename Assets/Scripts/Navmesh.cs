@@ -12,20 +12,6 @@ public class Navmesh : MonoBehaviour
     {
         navmesh = this;
     }
-    void Start()
-    {
-        //wordsState = FindObjectOfType<WordsStateManager>();
-    }
-    void Update()
-    {
-        //if (wordsState.currentState == wordsState.fillingState)
-        //{
-        //    for (int i = 0; i < navMeshSurfaces.Length; i++)
-        //    {
-        //        navMeshSurfaces[i].BuildNavMesh();
-        //    }
-        //}
-    }
     public void NavmeshSurface()
     {
         for (int i = 0; i < navMeshSurfaces.Length; i++)

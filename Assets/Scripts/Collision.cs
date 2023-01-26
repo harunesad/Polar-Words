@@ -10,6 +10,5 @@ public class Collision : MonoBehaviour
         {
             gameObject.layer = collision.gameObject.layer;
         }
-        //Destroy(this);
     }
 }

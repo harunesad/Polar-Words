@@ -16,7 +16,6 @@ public class WordsClearState : WordsBaseState
             //index = 0;
             words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
             index++;
-            Debug.Log(index);
             words.SwitchState(words.clearState);
         }
         else

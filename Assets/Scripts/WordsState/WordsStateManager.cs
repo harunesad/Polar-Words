@@ -19,6 +19,7 @@ public class WordsStateManager : MonoBehaviour
     public WordsFillingState fillingState = new WordsFillingState();
     public CharacterMoveState moveState = new CharacterMoveState();
     public WordsClearState clearState = new WordsClearState();
+    public WordsFinishState finishState = new WordsFinishState();
     private void Awake()
     {
         wordsState = this;

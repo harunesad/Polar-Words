@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class CharacterMoveState : WordsBaseState
 {
     GameObject polar;
+    GameObject clickObj;
     NavMeshAgent agent;
     Vector3 point;
     public override void EnterState(WordsStateManager words)
@@ -23,29 +24,29 @@ public class CharacterMoveState : WordsBaseState
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            for (int i = 0; i < words.words.Count; i++)
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
             {
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
-                {
-                    //if (words.ground.transform.name == "StartHextile")
-                    //{
-                    //    words.ground.layer = 0;
-                    //}
-                    point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                    agent.SetDestination(point);
-                    agent.isStopped = false;
-                    Debug.Log(point);
-                }
+                //point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                clickObj = hit.transform.gameObject;
+                Vector3 hitPos = hit.transform.position;
+                point = new Vector3(hitPos.x, polar.transform.position.y, hitPos.z);
+                agent.SetDestination(point);
+                agent.isStopped = false;
+            }
+            if (clickObj == words.finishGround)
+            {
+                words.SwitchState(words.finishState);
             }
         }
-        //Debug.Log(Vector3.Distance(polar.transform.position, point));
-        if (Vector3.Distance(polar.transform.position, point) < 0.1f)
+        //if (Vector3.Distance(polar.transform.position, point) < 0.1f)
+        //{
+        //    words.ground.transform.parent.gameObject.layer = 3;
+        //    words.SwitchState(words.clearState);
+        //}
+        if (polar.transform.position == point)
         {
-            //polar.AddComponent<PolarCollision>();
-            //words.ground.layer = 7;
             words.ground.transform.parent.gameObject.layer = 3;
             words.SwitchState(words.clearState);
-            //words.ground = collision.gameObject;
         }
     }
 }
