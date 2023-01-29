@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public class WordsStateManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class WordsStateManager : MonoBehaviour
     public List<string> myWord;
     public GameObject ground;
     public GameObject finishGround;
+    public NavMeshAgent agent;
+    public Vector3 point;
+
 
     public WordsBaseState currentState;
     public WordsSelectState selectState = new WordsSelectState();

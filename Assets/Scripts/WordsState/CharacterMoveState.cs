@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,19 +9,19 @@ public class CharacterMoveState : WordsBaseState
 {
     GameObject polar;
     GameObject clickObj;
-    NavMeshAgent agent;
-    Vector3 point;
+    CamLook camLook;
     public override void EnterState(WordsStateManager words)
     {
-        point = Vector3.zero;
+        words.point = Vector3.zero;
         polar = GameObject.Find("Polar");
-        agent = polar.GetComponent<NavMeshAgent>();
-        agent.isStopped = true;
+        words.agent = polar.GetComponent<NavMeshAgent>();
+        words.agent.isStopped = true;
+        camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
     }
 
     public override void UpdateState(WordsStateManager words)
     {
-        if (Input.GetMouseButtonDown(0) && agent.isStopped == true)
+        if (Input.GetMouseButtonDown(0) && words.agent.isStopped == true)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,13 +30,18 @@ public class CharacterMoveState : WordsBaseState
                 //point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 clickObj = hit.transform.gameObject;
                 Vector3 hitPos = hit.transform.position;
-                point = new Vector3(hitPos.x, polar.transform.position.y, hitPos.z);
-                agent.SetDestination(point);
-                agent.isStopped = false;
+                words.point = new Vector3(hitPos.x, polar.transform.position.y, hitPos.z);
+                //words.agent.SetDestination(point);
+                words.agent.isStopped = false;
             }
             if (clickObj == words.finishGround)
             {
+                camLook.enabled = true;
                 words.SwitchState(words.finishState);
+            }
+            else
+            {
+                words.agent.SetDestination(words.point);
             }
         }
         //if (Vector3.Distance(polar.transform.position, point) < 0.1f)
@@ -43,7 +49,7 @@ public class CharacterMoveState : WordsBaseState
         //    words.ground.transform.parent.gameObject.layer = 3;
         //    words.SwitchState(words.clearState);
         //}
-        if (polar.transform.position == point)
+        if (polar.transform.position.x == words.point.x && polar.transform.position.z == words.point.z)
         {
             words.ground.transform.parent.gameObject.layer = 3;
             words.SwitchState(words.clearState);

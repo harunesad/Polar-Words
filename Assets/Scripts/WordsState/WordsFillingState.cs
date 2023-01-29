@@ -8,7 +8,7 @@ public class WordsFillingState : WordsBaseState
     int index;
     public override void EnterState(WordsStateManager words)
     {
-        GameObject hextileIce = words.words[index].transform.GetChild(1).gameObject;
+        GameObject hextileIce = words.words[index].transform.GetChild(0).gameObject;
         if (words.ground != hextileIce && words.finishGround != hextileIce)
         {
             hextileIce.GetComponent<Animator>().SetTrigger("Wave");

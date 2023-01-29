@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Drawing;
 
 public class CamLook : MonoBehaviour
 {
@@ -15,14 +16,15 @@ public class CamLook : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (wordsState.currentState == wordsState.selectState)
-        {
-            SecondPos();
-        }
-        if (wordsState.currentState == wordsState.clearState)
-        {
-            FirstPos();
-        }
+        //if (wordsState.currentState == wordsState.selectState)
+        //{
+        //    SecondPos();
+        //}
+        //if (wordsState.currentState == wordsState.clearState)
+        //{
+        //    FirstPos();
+        //}
+        SecondPos();
     }
     public void FirstPos()
     {
@@ -42,7 +44,8 @@ public class CamLook : MonoBehaviour
         transform.DORotate(new Vector3(45, 45, 0), 2).SetEase(Ease.Linear).OnComplete(
             () =>
             {
-                wordsState.SwitchState(wordsState.fillingState);
+                //wordsState.SwitchState(wordsState.fillingState);
+                wordsState.agent.SetDestination(wordsState.point);
                 this.enabled = false;
             });
     }

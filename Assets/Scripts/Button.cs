@@ -38,7 +38,8 @@ public class Button : MonoBehaviour
         {
             if (wordsState.ýnputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
             {
-                camLook.enabled = true;
+                //camLook.enabled = true;
+                wordsState.SwitchState(wordsState.fillingState);
             }
         }
     }

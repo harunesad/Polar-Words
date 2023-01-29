@@ -10,5 +10,9 @@ public class Collision : MonoBehaviour
         {
             gameObject.layer = collision.gameObject.layer;
         }
+        if (WordsStateManager.wordsState.finishGround == gameObject)
+        {
+            gameObject.layer = collision.gameObject.layer;
+        }
     }
 }

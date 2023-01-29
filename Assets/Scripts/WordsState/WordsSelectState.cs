@@ -13,6 +13,11 @@ public class WordsSelectState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
+        //if (words.finishGround.layer == 6)
+        //{
+        //    words.SwitchState(words.moveState);
+        //    return;
+        //} 
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -21,9 +26,10 @@ public class WordsSelectState : WordsBaseState
             {
                 hit.transform.GetComponent<Renderer>().material.color = Color.green;
 
-                Transform canvas = hit.transform.GetChild(0);
-                TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
-                words.ýnputWord.text = words.ýnputWord.text + letter.text;
+                //Transform canvas = hit.transform.GetChild(0);
+                //TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
+                //words.ýnputWord.text = words.ýnputWord.text + letter.text;
+                words.ýnputWord.text = words.ýnputWord.text + hit.transform.name;
 
                 words.words.Add(hit.transform.gameObject);
                 hit.transform.gameObject.layer = 9;
@@ -33,8 +39,8 @@ public class WordsSelectState : WordsBaseState
                 hit.transform.gameObject.layer = 3;
                 hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
 
-                Transform canvas = hit.transform.GetChild(0);
-                TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
+                //Transform canvas = hit.transform.GetChild(0);
+                //TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
                 var word = words.ýnputWord.text.ToCharArray();
 
                 for (int i = 0; i < word.Length; i++)
@@ -42,7 +48,7 @@ public class WordsSelectState : WordsBaseState
                     words.myWord.Add(word[i].ToString());
                 }
 
-                words.myWord.Remove(letter.text.ToString());
+                words.myWord.Remove(hit.transform.name);
                 words.ýnputWord.text = "";
 
                 for (int i = 0; i < words.myWord.Count; i++)

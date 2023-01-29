@@ -707,6 +707,8 @@ MonoBehaviour:
   myWord: []
   ground: {fileID: 0}
   finishGround: {fileID: 0}
+  agent: {fileID: 0}
+  point: {x: 0, y: 0, z: 0}
 --- !u!4 &53397073
 Transform:
   m_ObjectHideFlags: 0
@@ -780,7 +782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: P
+  m_text: A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1674,7 +1676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword (5)
+      value: R
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Layer
@@ -2947,7 +2949,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_LocalScale.x
@@ -3239,7 +3241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: R
+  m_text: P
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3652,7 +3654,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.06666667
+  m_VoxelSize: 0.05
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
 --- !u!4 &373910664
@@ -4224,7 +4226,7 @@ RectTransform:
   m_Children:
   - {fileID: 126104237}
   m_Father: {fileID: 1617564967}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5689,7 +5691,7 @@ RectTransform:
   m_Children:
   - {fileID: 1125460247}
   m_Father: {fileID: 2146671293}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5839,7 +5841,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_LocalScale.x
@@ -6037,7 +6039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: O
+  m_text: R
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6248,7 +6250,7 @@ RectTransform:
   m_Children:
   - {fileID: 365136313}
   m_Father: {fileID: 994892317}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7786,7 +7788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword (1)
+      value: P
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Layer
@@ -7826,7 +7828,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_LocalScale.x
@@ -8422,7 +8424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A
+  m_text: O
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8873,7 +8875,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_LocalScale.x
@@ -9574,7 +9576,7 @@ RectTransform:
   m_Children:
   - {fileID: 1603035697}
   m_Father: {fileID: 488299053}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10290,7 +10292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword (3)
+      value: L
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Layer
@@ -11159,7 +11161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 10d30ab202b76e242aaa40d43a8bae91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11216,7 +11218,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &1580517840
 MonoBehaviour:
@@ -11700,7 +11702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword (4)
+      value: A
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Layer
@@ -12034,7 +12036,7 @@ RectTransform:
   m_Children:
   - {fileID: 673693877}
   m_Father: {fileID: 202779844}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12135,7 +12137,7 @@ RectTransform:
   m_Children:
   - {fileID: 177947552}
   m_Father: {fileID: 1417215768}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12761,7 +12763,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.06666667
+  m_VoxelSize: 0.05
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 38e15811481a17a46a232149bdb2562b, type: 2}
 --- !u!1001 &1773512406
@@ -14771,7 +14773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_LocalScale.x
@@ -15016,7 +15018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b15200d37de73754aadf7ceb90aa93ab, type: 3}
       propertyPath: m_LocalScale.x
@@ -15216,7 +15218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Name
-      value: hextileword (2)
+      value: O
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aece5f640f8c0d14d9593419014416ea, type: 3}
       propertyPath: m_Layer
