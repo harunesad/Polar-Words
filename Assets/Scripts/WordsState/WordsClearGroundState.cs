@@ -1,9 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
-public class WordsClearState : WordsBaseState
+public class WordsClearGroundState : WordsBaseState
 {
     int index;
     public override void EnterState(WordsStateManager words)
@@ -12,7 +12,7 @@ public class WordsClearState : WordsBaseState
         {
             words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
             index++;
-            words.SwitchState(words.clearState);
+            words.SwitchState(words.clearGroundState);
         }
         else
         {
@@ -26,18 +26,26 @@ public class WordsClearState : WordsBaseState
                 {
                     Navmesh.navmesh.NavmeshSurface();
                     words.words.RemoveAt(index);
-                    if (words.words.Count == 2)
+                    if (words.words.Count == 1 && words.ground == words.start)
                     {
                         index = 0;
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
-                        //words.start.layer = 6;
+                        words.SwitchState(words.selectState);
+                    }
+                    else if (words.words.Count == 2 && words.ground != words.start)
+                    {
+                        index = 0;
+                        words.ýnputWord.text = "";
+                        words.ground.transform.parent.gameObject.layer = 0;
+                        words.finishGround.layer = 7;
+                        Debug.Log("dssad");
                         words.SwitchState(words.selectState);
                     }
                     else
                     {
-                        words.SwitchState(words.clearState);
+                        words.SwitchState(words.clearGroundState);
                     }
                 });
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class WordsSelectState : WordsBaseState
 {
@@ -13,11 +14,13 @@ public class WordsSelectState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
-        //if (words.finishGround.layer == 6)
-        //{
-        //    words.SwitchState(words.moveState);
-        //    return;
-        //} 
+        if (words.finishGround.layer == 6)
+        {
+            words.point = new Vector3(words.finishGround.transform.position.x, words.polar.transform.position.y, words.finishGround.transform.position.z);
+            words.camLook.enabled = true;
+            words.SwitchState(words.finishState);
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -26,9 +29,6 @@ public class WordsSelectState : WordsBaseState
             {
                 hit.transform.GetComponent<Renderer>().material.color = Color.green;
 
-                //Transform canvas = hit.transform.GetChild(0);
-                //TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
-                //words.ýnputWord.text = words.ýnputWord.text + letter.text;
                 words.ýnputWord.text = words.ýnputWord.text + hit.transform.name;
 
                 words.words.Add(hit.transform.gameObject);
@@ -39,8 +39,6 @@ public class WordsSelectState : WordsBaseState
                 hit.transform.gameObject.layer = 3;
                 hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
 
-                //Transform canvas = hit.transform.GetChild(0);
-                //TextMeshProUGUI letter = canvas.GetChild(0).GetComponent<TextMeshProUGUI>();
                 var word = words.ýnputWord.text.ToCharArray();
 
                 for (int i = 0; i < word.Length; i++)
@@ -57,7 +55,6 @@ public class WordsSelectState : WordsBaseState
                 }
                 words.myWord.Clear();
                 words.words.Remove(hit.transform.gameObject);
-
             }
         }
     }

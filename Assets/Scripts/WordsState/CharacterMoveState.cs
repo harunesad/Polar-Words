@@ -7,16 +7,16 @@ using UnityEngine.AI;
 
 public class CharacterMoveState : WordsBaseState
 {
-    GameObject polar;
     GameObject clickObj;
-    CamLook camLook;
     public override void EnterState(WordsStateManager words)
     {
         words.point = Vector3.zero;
-        polar = GameObject.Find("Polar");
-        words.agent = polar.GetComponent<NavMeshAgent>();
         words.agent.isStopped = true;
-        camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
+        words.camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
+        //if (words.ground == words.start)
+        //{
+        //    words.start.layer = 6;
+        //}
     }
 
     public override void UpdateState(WordsStateManager words)
@@ -30,13 +30,13 @@ public class CharacterMoveState : WordsBaseState
                 //point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 clickObj = hit.transform.gameObject;
                 Vector3 hitPos = hit.transform.position;
-                words.point = new Vector3(hitPos.x, polar.transform.position.y, hitPos.z);
+                words.point = new Vector3(hitPos.x, words.polar.transform.position.y, hitPos.z);
                 //words.agent.SetDestination(point);
                 words.agent.isStopped = false;
             }
             if (clickObj == words.finishGround)
             {
-                camLook.enabled = true;
+                words.camLook.enabled = true;
                 words.SwitchState(words.finishState);
             }
             else
@@ -49,7 +49,7 @@ public class CharacterMoveState : WordsBaseState
         //    words.ground.transform.parent.gameObject.layer = 3;
         //    words.SwitchState(words.clearState);
         //}
-        if (polar.transform.position.x == words.point.x && polar.transform.position.z == words.point.z)
+        if (words.polar.transform.position.x == words.point.x && words.polar.transform.position.z == words.point.z)
         {
             words.ground.transform.parent.gameObject.layer = 3;
             words.SwitchState(words.clearState);
