@@ -13,10 +13,16 @@ public class CharacterMoveState : WordsBaseState
         words.point = Vector3.zero;
         words.agent.isStopped = true;
         words.camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
-        //if (words.ground == words.start)
-        //{
-        //    words.start.layer = 6;
-        //}
+
+        for (int i = 0; i < words.words.Count; i++)
+        {
+            if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6)
+            {
+                return;
+            }
+        }
+        words.start.layer = 6;
+        words.SwitchState(words.clearGroundState);
     }
 
     public override void UpdateState(WordsStateManager words)

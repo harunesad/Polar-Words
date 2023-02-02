@@ -12,7 +12,7 @@ public class Navmesh : MonoBehaviour
     {
         navmesh = this;
     }
-    public void NavmeshSurface()
+    public void NavMeshSurfaces()
     {
         for (int i = 0; i < navMeshSurfaces.Length; i++)
         {

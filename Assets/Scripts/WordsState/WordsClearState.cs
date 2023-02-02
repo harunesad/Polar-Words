@@ -24,7 +24,7 @@ public class WordsClearState : WordsBaseState
             words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 1).OnComplete(
                 () =>
                 {
-                    Navmesh.navmesh.NavmeshSurface();
+                    Navmesh.navmesh.NavMeshSurfaces();
                     words.words.RemoveAt(index);
                     if (words.words.Count == 2)
                     {
@@ -32,7 +32,6 @@ public class WordsClearState : WordsBaseState
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
-                        //words.start.layer = 6;
                         words.SwitchState(words.selectState);
                     }
                     else

@@ -24,7 +24,7 @@ public class WordsClearGroundState : WordsBaseState
             words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 1).OnComplete(
                 () =>
                 {
-                    Navmesh.navmesh.NavmeshSurface();
+                    Navmesh.navmesh.NavMeshSurfaces();
                     words.words.RemoveAt(index);
                     if (words.words.Count == 1 && words.ground == words.start)
                     {

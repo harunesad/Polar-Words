@@ -32,21 +32,20 @@ public class Button : MonoBehaviour
             }
         }
     }
-    public void ClearGround()
-    {
-        if (wordsState.currentState == wordsState.moveState)
-        {
-            wordsState.start.layer = 6;
-            wordsState.SwitchState(wordsState.clearGroundState);
-        }
-    }
+    //public void ClearGround()
+    //{
+    //    if (wordsState.currentState == wordsState.moveState)
+    //    {
+    //        wordsState.start.layer = 6;
+    //        wordsState.SwitchState(wordsState.clearGroundState);
+    //    }
+    //}
     public void Answer()
     {
         for (int i = 0; i < wordsState.keyWord.Count; i++)
         {
             if (wordsState.ýnputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
             {
-                //camLook.enabled = true;
                 wordsState.SwitchState(wordsState.fillingState);
             }
         }

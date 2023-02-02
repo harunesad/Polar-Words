@@ -18,17 +18,18 @@ public class WordsFillingState : WordsBaseState
         index++;
         if (index == words.words.Count)
         {
-            Navmesh.navmesh.NavmeshSurface();
+            Navmesh.navmesh.NavMeshSurfaces();
             index = 0;
-            if (words.ground.transform.name == "StartHextile")
-            {
-                words.ground.layer = 7;
-            }
+            //if (words.ground.transform.name == "StartHextile")
+            //{
+            //    words.ground.layer = 7;
+            //}
+            words.start.layer = 7;
             words.SwitchState(words.moveState);
         }
         else
         {
-            Navmesh.navmesh.NavmeshSurface();
+            Navmesh.navmesh.NavMeshSurfaces();
             words.SwitchState(words.fillingState);
         }
     });
