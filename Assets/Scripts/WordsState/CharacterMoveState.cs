@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -55,10 +56,17 @@ public class CharacterMoveState : WordsBaseState
         //    words.ground.transform.parent.gameObject.layer = 3;
         //    words.SwitchState(words.clearState);
         //}
-        if (words.polar.transform.position.x == words.point.x && words.polar.transform.position.z == words.point.z)
+        Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
+        //if (words.polar.transform.position.x == words.point.x && words.polar.transform.position.z == words.point.z)
+        //{
+        //    words.ground.transform.parent.gameObject.layer = 3;
+        //    words.SwitchState(words.clearState);
+        //}
+        if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
             words.ground.transform.parent.gameObject.layer = 3;
             words.SwitchState(words.clearState);
         }
+        Debug.Log(Vector3.Distance(words.polar.transform.position, newPoint));
     }
 }
