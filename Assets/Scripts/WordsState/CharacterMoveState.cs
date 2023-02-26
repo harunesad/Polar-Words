@@ -13,7 +13,6 @@ public class CharacterMoveState : WordsBaseState
     {
         words.point = Vector3.zero;
         words.agent.isStopped = true;
-        words.camLook = GameObject.FindObjectOfType<CamLook>().GetComponent<CamLook>();
 
         for (int i = 0; i < words.words.Count; i++)
         {
@@ -43,8 +42,9 @@ public class CharacterMoveState : WordsBaseState
             }
             if (clickObj == words.finishGround)
             {
-                words.camLook.enabled = true;
                 words.SwitchState(words.finishState);
+                //words.camLook.enabled = true;
+                return;
             }
             else
             {
@@ -64,9 +64,16 @@ public class CharacterMoveState : WordsBaseState
         //}
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
-            words.ground.transform.parent.gameObject.layer = 3;
-            words.SwitchState(words.clearState);
+            if (words.ground == words.beforeToFinish)
+            {
+                words.agent.SetDestination(words.finishGround.transform.position);
+            }
+            else
+            {
+                words.ground.transform.parent.gameObject.layer = 3;
+                words.SwitchState(words.clearState);
+            }
         }
-        Debug.Log(Vector3.Distance(words.polar.transform.position, newPoint));
+        //Debug.Log(Vector3.Distance(words.polar.transform.position, newPoint));
     }
 }

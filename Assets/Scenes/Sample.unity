@@ -706,12 +706,13 @@ MonoBehaviour:
   words: []
   myWord: []
   ground: {fileID: 0}
-  finishGround: {fileID: 0}
-  agent: {fileID: 0}
+  finishGround: {fileID: 2087364367}
+  beforeToFinish: {fileID: 666552038}
+  agent: {fileID: 1580517835}
   point: {x: 0, y: 0, z: 0}
-  polar: {fileID: 0}
-  start: {fileID: 0}
-  camLook: {fileID: 0}
+  polar: {fileID: 1580517832}
+  start: {fileID: 282588042}
+  camLook: {fileID: 339637100}
 --- !u!4 &53397073
 Transform:
   m_ObjectHideFlags: 0
@@ -3179,7 +3180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339637096}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 763adbb4362556a449f025f805480d23, type: 3}
   m_Name: 

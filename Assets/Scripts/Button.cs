@@ -14,7 +14,7 @@ public class Button : MonoBehaviour
     }
     public void DeleteWord()
     {
-        if (camLook.enabled == false && wordsState.currentState == wordsState.selectState)
+        if (camLook.gameObject.transform.localEulerAngles.x == 90 && wordsState.currentState == wordsState.selectState)
         {
             for (int i = 0; i < wordsState.words.Count; i++)
             {
@@ -46,7 +46,9 @@ public class Button : MonoBehaviour
         {
             if (wordsState.ýnputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
             {
-                wordsState.SwitchState(wordsState.fillingState);
+                //camLook.enabled = true;
+                //wordsState.SwitchState(wordsState.fillingState);
+                CamLook.cam.SecondPos();
             }
         }
     }

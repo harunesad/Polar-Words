@@ -32,7 +32,10 @@ public class WordsClearState : WordsBaseState
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
-                        words.SwitchState(words.selectState);
+                        CamLook.cam.FirstPos();
+                        //words.camLook.enabled = true;
+                        //words.SwitchState(words.selectState);
+                        Debug.Log("ss");
                     }
                     else
                     {

@@ -14,6 +14,7 @@ public class WordsStateManager : MonoBehaviour
     public List<string> myWord;
     public GameObject ground;
     public GameObject finishGround;
+    public GameObject beforeToFinish;
     public NavMeshAgent agent;
     public Vector3 point;
     public GameObject polar;
@@ -30,11 +31,12 @@ public class WordsStateManager : MonoBehaviour
     private void Awake()
     {
         wordsState = this;
-        finishGround = GameObject.Find("FinishHextile");
-        start = GameObject.Find("StartHextile");
+        //finishGround = GameObject.Find("FinishHextile");
+        //start = GameObject.Find("StartHextile");
+        //camLook = FindObjectOfType<CamLook>().GetComponent<CamLook>();
         words.Add(finishGround.transform.parent.gameObject);
-        polar = GameObject.Find("Polar");
-        agent = polar.GetComponent<NavMeshAgent>();
+        //polar = GameObject.Find("Polar");
+        //agent = polar.GetComponent<NavMeshAgent>();
     }
     void Start()
     {
