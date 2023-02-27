@@ -18,7 +18,8 @@ public class Button : MonoBehaviour
         {
             for (int i = 0; i < wordsState.words.Count; i++)
             {
-                wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+                //wordsState.words[i].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+                wordsState.words[i].GetComponent<Renderer>().materials[1].color = wordsState.firstColor;
             }
             wordsState.ýnputWord.text = "";
             for (int i = 0; i < wordsState.words.Count; i++)
@@ -32,14 +33,6 @@ public class Button : MonoBehaviour
             }
         }
     }
-    //public void ClearGround()
-    //{
-    //    if (wordsState.currentState == wordsState.moveState)
-    //    {
-    //        wordsState.start.layer = 6;
-    //        wordsState.SwitchState(wordsState.clearGroundState);
-    //    }
-    //}
     public void Answer()
     {
         for (int i = 0; i < wordsState.keyWord.Count; i++)

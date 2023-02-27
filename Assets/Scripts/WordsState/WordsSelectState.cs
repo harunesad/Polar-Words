@@ -21,14 +21,15 @@ public class WordsSelectState : WordsBaseState
             words.SwitchState(words.finishState);
             return;
         }
-        //Debug.Log(camLook.gameObject.transform.localEulerAngles.x);
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.wordMask) && camLook.gameObject.transform.localEulerAngles.x == 90)
             {
-                hit.transform.GetComponent<Renderer>().material.color = Color.green;
+                //hit.transform.GetComponent<Renderer>().material.color = Color.green;
+                words.firstColor = hit.transform.GetComponent<Renderer>().materials[1].color;
+                hit.transform.GetComponent<Renderer>().materials[1].color = Color.green;
 
                 words.ýnputWord.text = words.ýnputWord.text + hit.transform.name;
 
@@ -38,7 +39,8 @@ public class WordsSelectState : WordsBaseState
             else if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.wordSelectMask) && camLook.gameObject.transform.localEulerAngles.x == 90)
             {
                 hit.transform.gameObject.layer = 3;
-                hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+                //hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+                hit.transform.GetComponent<Renderer>().materials[1].color = words.firstColor;
 
                 var word = words.ýnputWord.text.ToCharArray();
 

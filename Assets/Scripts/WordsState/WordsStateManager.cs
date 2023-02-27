@@ -20,6 +20,7 @@ public class WordsStateManager : MonoBehaviour
     public GameObject polar;
     public GameObject start;
     public CamLook camLook;
+    public Color firstColor;
 
     public WordsBaseState currentState;
     public WordsSelectState selectState = new WordsSelectState();
@@ -31,12 +32,7 @@ public class WordsStateManager : MonoBehaviour
     private void Awake()
     {
         wordsState = this;
-        //finishGround = GameObject.Find("FinishHextile");
-        //start = GameObject.Find("StartHextile");
-        //camLook = FindObjectOfType<CamLook>().GetComponent<CamLook>();
         words.Add(finishGround.transform.parent.gameObject);
-        //polar = GameObject.Find("Polar");
-        //agent = polar.GetComponent<NavMeshAgent>();
     }
     void Start()
     {

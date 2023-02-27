@@ -33,11 +33,9 @@ public class CharacterMoveState : WordsBaseState
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
             {
-                //point = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 clickObj = hit.transform.gameObject;
                 Vector3 hitPos = hit.transform.position;
                 words.point = new Vector3(hitPos.x, words.polar.transform.position.y, hitPos.z);
-                //words.agent.SetDestination(point);
                 words.agent.isStopped = false;
             }
             if (clickObj == words.finishGround)
@@ -51,17 +49,7 @@ public class CharacterMoveState : WordsBaseState
                 words.agent.SetDestination(words.point);
             }
         }
-        //if (Vector3.Distance(polar.transform.position, point) < 0.1f)
-        //{
-        //    words.ground.transform.parent.gameObject.layer = 3;
-        //    words.SwitchState(words.clearState);
-        //}
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
-        //if (words.polar.transform.position.x == words.point.x && words.polar.transform.position.z == words.point.z)
-        //{
-        //    words.ground.transform.parent.gameObject.layer = 3;
-        //    words.SwitchState(words.clearState);
-        //}
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
             if (words.ground == words.beforeToFinish)
@@ -74,6 +62,5 @@ public class CharacterMoveState : WordsBaseState
                 words.SwitchState(words.clearState);
             }
         }
-        //Debug.Log(Vector3.Distance(words.polar.transform.position, newPoint));
     }
 }
