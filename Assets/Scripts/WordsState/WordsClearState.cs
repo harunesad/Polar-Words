@@ -10,17 +10,17 @@ public class WordsClearState : WordsBaseState
     {
         if (words.words[index] == words.ground.transform.parent.gameObject || words.words[index] == words.finishGround.transform.parent.gameObject)
         {
-            words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+            words.words[index].GetComponent<Renderer>().materials[1].color = words.firstColor;
             index++;
             words.SwitchState(words.clearState);
         }
         else
         {
-            words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+            words.words[index].GetComponent<Renderer>().materials[1].color = words.firstColor;
             words.words[index].gameObject.layer = 3;
 
             words.words[index].transform.GetChild(0).gameObject.layer = 7;
-            words.words[index].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Wave");
+            //words.words[index].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Wave");
             words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 1).OnComplete(
                 () =>
                 {
