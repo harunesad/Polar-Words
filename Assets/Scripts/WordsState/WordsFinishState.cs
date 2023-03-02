@@ -6,6 +6,7 @@ public class WordsFinishState : WordsBaseState
 {
     public override void EnterState(WordsStateManager words)
     {
+        Debug.Log("s");
         CamLook.cam.SecondPos();
     }
 
