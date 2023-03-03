@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System.Drawing;
 
 public class CamLook : MonoBehaviour
 {
@@ -45,14 +44,15 @@ public class CamLook : MonoBehaviour
             () =>
             {
                 //wordsState.SwitchState(wordsState.fillingState);
-                if (wordsState.currentState == wordsState.finishState)
-                {
-                    wordsState.agent.SetDestination(wordsState.point);
-                }
-                if (wordsState.currentState == wordsState.selectState)
-                {
-                    wordsState.SwitchState(wordsState.fillingState);
-                }
+                //if (wordsState.currentState == wordsState.finishState)
+                //{
+                //    wordsState.agent.SetDestination(wordsState.point);
+                //}
+                //if (wordsState.currentState == wordsState.selectState)
+                //{
+                //    wordsState.SwitchState(wordsState.fillingState);
+                //}
+                wordsState.SwitchState(wordsState.fillingState);
                 //this.enabled = false;
             });
     }
