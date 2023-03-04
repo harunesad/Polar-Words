@@ -17,13 +17,14 @@ public class WordsFinishState : WordsBaseState
         if (Vector3.Distance(words.polar.transform.position, words.point) < 0.1f)
         {
             int levelId = SceneManager.GetActiveScene().buildIndex;
-            GameObject fish = GameObject.Find("Fish");
+            //GameObject fish = GameObject.Find("Fish");
+            int fishCount = GameObject.FindObjectsOfType<FishCollision>().Length;
 
             JsonSave.json.so.levelFinish[levelId].levelState = true;
 
-            if (fish == null)
+            if (words.startFishCount > 0 && fishCount == 0)
             {
-                JsonSave.json.so.levelFinish[levelId].fishState = true;
+                JsonSave.json.so.levelFinish[JsonSave.json.so.fishLevel].fishState = true;
             }
             JsonSave.json.Save();
         }

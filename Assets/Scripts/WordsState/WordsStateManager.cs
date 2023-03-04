@@ -21,6 +21,7 @@ public class WordsStateManager : MonoBehaviour
     public GameObject start;
     public CamLook camLook;
     public Color firstColor;
+    public int startFishCount;
 
     public WordsBaseState currentState;
     public WordsSelectState selectState = new WordsSelectState();
@@ -33,6 +34,7 @@ public class WordsStateManager : MonoBehaviour
     {
         wordsState = this;
         words.Add(finishGround.transform.parent.gameObject);
+        startFishCount = FindObjectsOfType<FishCollision>().Length;
     }
     void Start()
     {
