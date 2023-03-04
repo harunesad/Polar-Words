@@ -22,6 +22,9 @@ public class WordsFillingState : WordsBaseState
             Navmesh.navmesh.NavMeshSurfaces();
             index = 0;
             words.start.layer = 7;
+            //GameObject fish = GameObject.Find("Fish");
+            //Debug.Log(fish);
+            //words.fish.gameObject.SetActive(true);
             words.SwitchState(words.moveState);
         }
         else

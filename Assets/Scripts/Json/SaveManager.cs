@@ -17,7 +17,6 @@ public static class SaveManager
         }
         string json = JsonUtility.ToJson(so);
         File.WriteAllText(dir + fileName, json);
-        Debug.Log(dir);
     }
     public static SaveObject Load()
     {

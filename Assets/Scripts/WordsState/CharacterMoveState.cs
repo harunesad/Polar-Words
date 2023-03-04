@@ -52,15 +52,21 @@ public class CharacterMoveState : WordsBaseState
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
-            if (words.ground == words.beforeToFinish)
-            {
-                words.agent.SetDestination(words.finishGround.transform.position);
-            }
-            else
-            {
-                words.ground.transform.parent.gameObject.layer = 3;
-                words.SwitchState(words.clearState);
-            }
+            //if (words.ground == words.beforeToFinish)
+            //{
+            //    words.agent.SetDestination(words.finishGround.transform.position);
+            //}
+            //else
+            //{
+            //    words.ground.transform.parent.gameObject.layer = 3;
+            //    words.SwitchState(words.clearState);
+            //}
+            //words.ground.transform.parent.gameObject.layer = 3;
+            //if (words.fish != null)
+            //{
+            //    words.fish.SetActive(false);
+            //}
+            words.SwitchState(words.clearState);
         }
     }
 }

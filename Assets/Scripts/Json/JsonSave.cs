@@ -12,6 +12,13 @@ public class JsonSave : MonoBehaviour
     }
     private void Start()
     {
+        //so.fishCount = 0;
+        //for (int i = 0; i < so.levelFinish.Count; i++)
+        //{
+        //    so.levelFinish[i].fishState = false;
+        //    so.levelFinish[i].levelState = false;
+        //}
+        //Save();
         Load();
     }
     public void Save()

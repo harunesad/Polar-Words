@@ -6,6 +6,9 @@ public class PolarCollision : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
-        WordsStateManager.wordsState.ground = other.gameObject;
+        if (other.gameObject.layer != 10)
+        {
+            WordsStateManager.wordsState.ground = other.gameObject;
+        }
     }
 }

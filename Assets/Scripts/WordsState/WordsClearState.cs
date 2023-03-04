@@ -36,7 +36,6 @@ public class WordsClearState : WordsBaseState
                         CamLook.cam.FirstPos();
                         //words.camLook.enabled = true;
                         //words.SwitchState(words.selectState);
-                        Debug.Log("ss");
                     }
                     else
                     {

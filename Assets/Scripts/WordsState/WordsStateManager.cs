@@ -15,6 +15,7 @@ public class WordsStateManager : MonoBehaviour
     public GameObject ground;
     public GameObject finishGround;
     public GameObject beforeToFinish;
+    public GameObject fish;
     public NavMeshAgent agent;
     public Vector3 point;
     public GameObject polar;
