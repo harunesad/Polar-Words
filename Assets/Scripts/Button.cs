@@ -44,7 +44,18 @@ public class Button : MonoBehaviour
     }
     public void Answer()
     {
-        if (wordsState.currentState == wordsState.selectState && newWord.Contains(wordsState.ýnputWord.text.ToLower()))
+        string ýnputWord = wordsState.ýnputWord.text;
+        var word = ýnputWord.ToCharArray();
+        ýnputWord = "";
+        for (int i = 0; i < word.Length; i++)
+        {
+            if (word[i]== 'I')
+            {
+                word[i]= 'i';
+            }
+            ýnputWord = ýnputWord + word[i];
+        }
+        if (wordsState.currentState == wordsState.selectState && newWord.Contains(ýnputWord.ToLower()))
         {
             //for (int i = 0; i < lines.Length; i++)
             //{
