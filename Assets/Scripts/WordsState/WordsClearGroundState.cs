@@ -8,6 +8,7 @@ public class WordsClearGroundState : WordsBaseState
     int index;
     public override void EnterState(WordsStateManager words)
     {
+        Debug.Log("sads");
         if (words.words[index] == words.ground.transform.parent.gameObject || words.words[index] == words.finishGround.transform.parent.gameObject)
         {
             words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
@@ -16,11 +17,13 @@ public class WordsClearGroundState : WordsBaseState
         }
         else
         {
-            words.words[index].GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+            Debug.Log("sassssds");
+            words.words[index].GetComponent<Renderer>().materials[1].color = words.firstColor;
             words.words[index].gameObject.layer = 3;
 
             words.words[index].transform.GetChild(0).gameObject.layer = 7;
-            words.words[index].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Wave");
+            //words.words[index].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Wave");
+            words.words[index].transform.GetChild(0).DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1).SetEase(Ease.Linear);
             words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 1).OnComplete(
                 () =>
                 {
@@ -32,7 +35,8 @@ public class WordsClearGroundState : WordsBaseState
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
-                        words.SwitchState(words.selectState);
+                        words.camLook.FirstPos();
+                        //words.SwitchState(words.selectState);
                     }
                     else if (words.words.Count == 2 && words.ground != words.start)
                     {
@@ -41,7 +45,8 @@ public class WordsClearGroundState : WordsBaseState
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
                         Debug.Log("dssad");
-                        words.SwitchState(words.selectState);
+                        words.camLook.FirstPos();
+                        //words.SwitchState(words.selectState);
                     }
                     else
                     {
