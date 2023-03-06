@@ -12,7 +12,7 @@ public class Button : MonoBehaviour
     List<string> newWord;
     private void Awake()
     {
-        string filePath = Application.dataPath + "/words_alpha.csv";
+        string filePath = Application.dataPath + "/dictionary.csv";
         lines = File.ReadAllLines(filePath);
         newWord = new List<string>(lines);
         newWord.AddRange(lines);
