@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
-    private void OnCollisionEnter(UnityEngine.Collision collision)
+    private void OnCollisionStay(UnityEngine.Collision collision)
     {
-        if (gameObject.layer == 7 && WordsStateManager.wordsState.currentState == WordsStateManager.wordsState.fillingState)
+        if (gameObject.layer == 7)
         {
             gameObject.layer = collision.gameObject.layer;
         }

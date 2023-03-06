@@ -13,7 +13,6 @@ public class CharacterMoveState : WordsBaseState
     {
         words.point = Vector3.zero;
         words.agent.isStopped = true;
-
         for (int i = words.words.Count - 1; i > 0; i--)
         {
             if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6)
