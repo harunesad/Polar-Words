@@ -7,7 +7,7 @@ public class CamLook : MonoBehaviour
 {
     public static CamLook cam;
     WordsStateManager wordsState;
-    public GameObject firstPoint, secondPoint;
+    public GameObject firstPoint;
     private void Awake()
     {
         cam = this;
@@ -38,9 +38,9 @@ public class CamLook : MonoBehaviour
     }
     public void SecondPos() 
     {
-        Vector3 pos = new Vector3(secondPoint.transform.position.x - 0.5f, transform.position.y, secondPoint.transform.position.z - 1);
+        Vector3 pos = new Vector3(firstPoint.transform.position.x, transform.position.y, firstPoint.transform.position.z - 1);
         transform.DOMove(pos, 2).SetEase(Ease.Linear);
-        transform.DORotate(new Vector3(45, 45, 0), 2).SetEase(Ease.Linear).OnComplete(
+        transform.DORotate(new Vector3(45, 30, 0), 2).SetEase(Ease.Linear).OnComplete(
             () =>
             {
                 //wordsState.SwitchState(wordsState.fillingState);

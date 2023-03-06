@@ -12,8 +12,8 @@ public class WordsFillingState : WordsBaseState
         if (words.ground != hextileIce && words.finishGround != hextileIce)
         {
             //hextileIce.GetComponent<Animator>().SetTrigger("Wave");
-            hextileIce.transform.DOScale(new Vector3(0.5f, 0.5f, 1), 0.75f).SetEase(Ease.Linear);
-            hextileIce.transform.DOMoveY(0.12f, 0.75f).SetEase(Ease.Linear).OnComplete(
+            hextileIce.transform.DOScale(new Vector3(0.5f, 0.5f, 1), 0.4f).SetEase(Ease.Linear);
+            hextileIce.transform.DOMoveY(0.12f, 0.4f).SetEase(Ease.Linear).OnComplete(
     () =>
     {
         index++;
