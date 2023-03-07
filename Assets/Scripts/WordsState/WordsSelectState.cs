@@ -29,7 +29,7 @@ public class WordsSelectState : WordsBaseState
             {
                 //hit.transform.GetComponent<Renderer>().material.color = Color.green;
                 words.firstColor = hit.transform.GetComponent<Renderer>().materials[1].color;
-                hit.transform.GetComponent<Renderer>().materials[1].color = Color.green;
+                hit.transform.GetComponent<Renderer>().materials[1].color = words.lastColor;
 
                 words.ýnputWord.text = words.ýnputWord.text + hit.transform.name;
 

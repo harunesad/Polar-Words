@@ -20,15 +20,15 @@ public class WordsClearState : WordsBaseState
             words.words[index].gameObject.layer = 3;
 
             words.words[index].transform.GetChild(0).gameObject.layer = 7;
-            //words.words[index].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Wave");
             words.words[index].transform.GetChild(0).DOScale(new Vector3(0.01f, 0.01f, 0.01f), 0.4f).SetEase(Ease.Linear);
             words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 0.4f).SetEase(Ease.Linear).OnComplete(
                 () =>
                 {
-                    Navmesh.navmesh.NavMeshSurfaces();
+                    //Navmesh.navmesh.NavMeshSurfaces();
                     words.words.RemoveAt(index);
                     if (words.words.Count == 2)
                     {
+                        Navmesh.navmesh.NavMeshSurfaces();
                         index = 0;
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
@@ -36,11 +36,13 @@ public class WordsClearState : WordsBaseState
                         CamLook.cam.FirstPos();
                         //words.camLook.enabled = true;
                         //words.SwitchState(words.selectState);
+                        return;
                     }
-                    else
-                    {
-                        words.SwitchState(words.clearState);
-                    }
+                    //else
+                    //{
+                    //    words.SwitchState(words.clearState);
+                    //}
+                    words.SwitchState(words.clearState);
                 });
         }
     }

@@ -22,6 +22,7 @@ public class WordsStateManager : MonoBehaviour
     public GameObject start;
     public CamLook camLook;
     public Color firstColor;
+    public Color lastColor;
     public int startFishCount;
 
     public WordsBaseState currentState;
