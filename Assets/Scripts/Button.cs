@@ -6,12 +6,16 @@ using System.IO;
 
 public class Button : MonoBehaviour
 {
+    public static Button button;
     CamLook camLook;
     WordsStateManager wordsState;
+    public GameObject snowGlobe;
     string[] lines;
     List<string> newWord;
+    public int buttonClickCount;
     private void Awake()
     {
+        button = this;
         string filePath = Application.dataPath + "/dictionary.csv";
         lines = File.ReadAllLines(filePath);
         newWord = new List<string>(lines);
@@ -69,6 +73,10 @@ public class Button : MonoBehaviour
             //{
             //    CamLook.cam.SecondPos();
             //}
+            if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f) && buttonClickCount == 0)
+            {
+                buttonClickCount++;
+            }
             CamLook.cam.SecondPos();
         }
         //for (int i = 0; i < wordsState.keyWord.Count; i++)
@@ -80,5 +88,29 @@ public class Button : MonoBehaviour
         //        CamLook.cam.SecondPos();
         //    }
         //}
+    }
+    public void SnowGlobe()
+    {
+        if (buttonClickCount == 0 && wordsState.currentState == wordsState.selectState)
+        {
+            //bool state = snowGlobe.activeSelf;
+            //snowGlobe.SetActive(!state);
+            ColorChange();
+        }
+        else
+        {
+
+        }
+    }
+    void ColorChange()
+    {
+        if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 1))
+        {
+            snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+        }
+        else if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f))
+        {
+            snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        }
     }
 }

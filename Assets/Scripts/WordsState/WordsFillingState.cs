@@ -11,26 +11,26 @@ public class WordsFillingState : WordsBaseState
         GameObject hextileIce = words.words[index].transform.GetChild(0).gameObject;
         if (words.ground != hextileIce && words.finishGround != hextileIce)
         {
-            hextileIce.transform.DOScale(new Vector3(0.5f, 0.5f, 1), 0.4f).SetEase(Ease.Linear);
-            hextileIce.transform.DOMoveY(0.12f, 0.4f).SetEase(Ease.Linear).OnComplete(
-    () =>
-    {
-        index++;
-        if (index == words.words.Count)
+            hextileIce.transform.DOScale(new Vector3(0.5f, 0.5f, 1), 0.6f).SetEase(Ease.Linear);
+            hextileIce.transform.DOMoveY(0.12f, 0.6f).SetEase(Ease.Linear).OnComplete(
+        () =>
         {
-            Navmesh.navmesh.NavMeshSurfaces();
-            index = 0;
-            words.start.layer = 7;
-            words.SwitchState(words.moveState);
-            return;
-        }
-        //else
-        //{
-        //    //Navmesh.navmesh.NavMeshSurfaces();
-        //    words.SwitchState(words.fillingState);
-        //}
-        words.SwitchState(words.fillingState);
-    });
+            index++;
+            if (index == words.words.Count)
+            {
+                Navmesh.navmesh.NavMeshSurfaces();
+                index = 0;
+                words.start.layer = 7;
+                words.SwitchState(words.moveState);
+                return;
+            }
+            //else
+            //{
+            //    //Navmesh.navmesh.NavMeshSurfaces();
+            //    words.SwitchState(words.fillingState);
+            //}
+            words.SwitchState(words.fillingState);
+        });
             return;
         }
         //else
@@ -44,6 +44,6 @@ public class WordsFillingState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
-        
+
     }
 }

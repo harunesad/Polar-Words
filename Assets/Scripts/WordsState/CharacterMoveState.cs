@@ -13,12 +13,20 @@ public class CharacterMoveState : WordsBaseState
     {
         words.point = Vector3.zero;
         words.agent.isStopped = true;
+        words.firstGround = words.ground;
         for (int i = words.words.Count - 1; i > 0; i--)
         {
             if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6)
             {
                 return;
             }
+        }
+        if (Button.button.buttonClickCount == 1)
+        {
+            //Button.button.buttonClickCount++;
+            //words.firstGround = words.ground;
+            words.SwitchState(words.snowGlobeState);
+            return;
         }
         words.start.layer = 6;
         words.SwitchState(words.clearGroundState);
@@ -40,7 +48,6 @@ public class CharacterMoveState : WordsBaseState
             if (clickObj == words.finishGround)
             {
                 words.SwitchState(words.finishState);
-                //words.camLook.enabled = true;
                 return;
             }
             else
@@ -65,6 +72,12 @@ public class CharacterMoveState : WordsBaseState
             //{
             //    words.fish.SetActive(false);
             //}
+            if (Button.button.buttonClickCount == 1)
+            {
+                Button.button.buttonClickCount++;
+                words.SwitchState(words.snowGlobeState);
+                return;
+            }
             words.SwitchState(words.clearState);
         }
     }

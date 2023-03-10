@@ -14,13 +14,13 @@ public class WordsSelectState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
-        if (words.finishGround.layer == 6)
-        {
-            words.point = new Vector3(words.finishGround.transform.position.x, words.polar.transform.position.y, words.finishGround.transform.position.z);
-            words.camLook.enabled = true;
-            words.SwitchState(words.finishState);
-            return;
-        }
+        //if (words.finishGround.layer == 6)
+        //{
+        //    words.point = new Vector3(words.finishGround.transform.position.x, words.polar.transform.position.y, words.finishGround.transform.position.z);
+        //    words.camLook.enabled = true;
+        //    words.SwitchState(words.finishState);
+        //    return;
+        //}
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;

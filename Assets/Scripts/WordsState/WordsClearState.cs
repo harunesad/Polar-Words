@@ -20,8 +20,8 @@ public class WordsClearState : WordsBaseState
             words.words[index].gameObject.layer = 3;
 
             words.words[index].transform.GetChild(0).gameObject.layer = 7;
-            words.words[index].transform.GetChild(0).DOScale(new Vector3(0.01f, 0.01f, 0.01f), 0.4f).SetEase(Ease.Linear);
-            words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 0.4f).SetEase(Ease.Linear).OnComplete(
+            words.words[index].transform.GetChild(0).DOScale(new Vector3(0.01f, 0.01f, 0.01f), 0.6f).SetEase(Ease.Linear);
+            words.words[index].transform.GetChild(0).DOMoveY(-0.25f, 0.6f).SetEase(Ease.Linear).OnComplete(
                 () =>
                 {
                     //Navmesh.navmesh.NavMeshSurfaces();

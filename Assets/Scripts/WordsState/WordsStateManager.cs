@@ -20,6 +20,7 @@ public class WordsStateManager : MonoBehaviour
     public Vector3 point;
     public GameObject polar;
     public GameObject start;
+    public GameObject firstGround;
     public CamLook camLook;
     public Color firstColor;
     public Color lastColor;
@@ -32,6 +33,7 @@ public class WordsStateManager : MonoBehaviour
     public WordsClearState clearState = new WordsClearState();
     public WordsFinishState finishState = new WordsFinishState();
     public WordsClearGroundState clearGroundState = new WordsClearGroundState();
+    public SnowGlobeState snowGlobeState = new SnowGlobeState();
     private void Awake()
     {
         wordsState = this;
