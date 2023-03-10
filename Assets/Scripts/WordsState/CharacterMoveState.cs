@@ -14,16 +14,21 @@ public class CharacterMoveState : WordsBaseState
         words.point = Vector3.zero;
         words.agent.isStopped = true;
         words.firstGround = words.ground;
+        words.ground.layer = 6;
         for (int i = words.words.Count - 1; i > 0; i--)
         {
+            Debug.Log(words.words[i]);
+            Debug.Log(words.ground.transform.parent.gameObject);
+            Debug.Log(words.words[i].transform.GetChild(0).gameObject.layer);
             if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6)
             {
+                Debug.Log("sadaaaa");
                 return;
             }
         }
         if (Button.button.buttonClickCount == 1)
         {
-            //Button.button.buttonClickCount++;
+            Button.button.buttonClickCount++;
             //words.firstGround = words.ground;
             words.SwitchState(words.snowGlobeState);
             return;
