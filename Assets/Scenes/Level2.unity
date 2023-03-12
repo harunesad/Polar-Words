@@ -407,6 +407,7 @@ MonoBehaviour:
   - VEST
   - MESH
   words: []
+  iceWords: []
   myWord: []
   ground: {fileID: 0}
   finishGround: {fileID: 1123582024}
@@ -707,8 +708,8 @@ MonoBehaviour:
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
+  m_OverrideTileSize: 1
+  m_TileSize: 16
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.033333335
   m_BuildHeightMesh: 0
@@ -1330,19 +1331,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 348282760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1421551293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: SnowGlobe
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &348282760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,7 +2812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowGlobe: {fileID: 348282757}
-  buttonClickCount: 0
+  buttonClick: 0
+  skillActive: 0
 --- !u!4 &1421551294
 Transform:
   m_ObjectHideFlags: 0

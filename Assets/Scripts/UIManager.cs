@@ -4,28 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-public class Button : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public static Button button;
+    public static UIManager uIManager;
     CamLook camLook;
     WordsStateManager wordsState;
     public GameObject snowGlobe;
     string[] lines;
     List<string> newWord;
-    public int buttonClickCount;
+    public bool buttonClick;
+    public bool skillActive;
     private void Awake()
     {
-        button = this;
+        uIManager = this;
+
         string filePath = Application.dataPath + "/dictionary.csv";
         lines = File.ReadAllLines(filePath);
         newWord = new List<string>(lines);
         newWord.AddRange(lines);
-    }
-    void Start()
-    {
+
         camLook = FindObjectOfType<CamLook>();
         wordsState = FindObjectOfType<WordsStateManager>();
+        snowGlobe.GetComponent<Button>().onClick.AddListener(SnowGlobe);
     }
+    //void Start()
+    //{
+    //    camLook = FindObjectOfType<CamLook>();
+    //    wordsState = FindObjectOfType<WordsStateManager>();
+    //}
     public void DeleteWord()
     {
         if (camLook.gameObject.transform.localEulerAngles.x == 90 && wordsState.currentState == wordsState.selectState)
@@ -73,9 +79,12 @@ public class Button : MonoBehaviour
             //{
             //    CamLook.cam.SecondPos();
             //}
-            if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f) && buttonClickCount == 0)
+            //skillActive = false;
+            if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f) && buttonClick == true)
             {
-                buttonClickCount++;
+                skillActive = true;
+                buttonClick = false;
+                snowGlobe.GetComponent<Button>().onClick.RemoveAllListeners();
             }
             CamLook.cam.SecondPos();
         }
@@ -91,8 +100,9 @@ public class Button : MonoBehaviour
     }
     public void SnowGlobe()
     {
-        if (buttonClickCount == 0 && wordsState.currentState == wordsState.selectState)
+        if (wordsState.currentState == wordsState.selectState && skillActive == false)
         {
+            buttonClick = !buttonClick;
             //bool state = snowGlobe.activeSelf;
             //snowGlobe.SetActive(!state);
             ColorChange();

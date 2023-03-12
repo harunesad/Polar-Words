@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class WordsSelectState : WordsBaseState
@@ -27,19 +28,16 @@ public class WordsSelectState : WordsBaseState
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.wordMask) && camLook.gameObject.transform.localEulerAngles.x == 90)
             {
-                //hit.transform.GetComponent<Renderer>().material.color = Color.green;
                 words.firstColor = hit.transform.GetComponent<Renderer>().materials[1].color;
                 hit.transform.GetComponent<Renderer>().materials[1].color = words.lastColor;
 
                 words.ýnputWord.text = words.ýnputWord.text + hit.transform.name;
-
                 words.words.Add(hit.transform.gameObject);
                 hit.transform.gameObject.layer = 9;
             }
             else if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.wordSelectMask) && camLook.gameObject.transform.localEulerAngles.x == 90)
             {
                 hit.transform.gameObject.layer = 3;
-                //hit.transform.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
                 hit.transform.GetComponent<Renderer>().materials[1].color = words.firstColor;
 
                 var word = words.ýnputWord.text.ToCharArray();

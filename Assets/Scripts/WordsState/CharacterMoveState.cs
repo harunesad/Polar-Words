@@ -9,38 +9,48 @@ using UnityEngine.AI;
 public class CharacterMoveState : WordsBaseState
 {
     GameObject clickObj;
+    bool walking;
     public override void EnterState(WordsStateManager words)
     {
         words.point = Vector3.zero;
         words.agent.isStopped = true;
         words.firstGround = words.ground;
-        words.ground.layer = 6;
+        walking = false;
+        //words.ground.layer = 6;
+        //Navmesh.navmesh.NavMeshSurfaces();
+        Debug.Log(words.agent.isStopped);
         for (int i = words.words.Count - 1; i > 0; i--)
         {
-            Debug.Log(words.words[i]);
-            Debug.Log(words.ground.transform.parent.gameObject);
-            Debug.Log(words.words[i].transform.GetChild(0).gameObject.layer);
             if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6)
             {
-                Debug.Log("sadaaaa");
-                return;
+                walking = true;
             }
         }
-        if (Button.button.buttonClickCount == 1)
+        for (int i = 0; i < words.iceWords.Count; i++)
         {
-            Button.button.buttonClickCount++;
-            //words.firstGround = words.ground;
-            words.SwitchState(words.snowGlobeState);
-            return;
+            if (words.iceWords.Count > 0 && words.iceWords[i].transform.GetChild(0).gameObject.layer == 6)
+            {
+                walking = true;
+            }
         }
-        words.start.layer = 6;
-        words.SwitchState(words.clearGroundState);
+        if (UIManager.uIManager.skillActive == true && walking == false)
+        {
+            words.firstGround = null;
+            UIManager.uIManager.skillActive = false;
+            words.SwitchState(words.snowGlobeState);
+        }
+        if (UIManager.uIManager.skillActive == false && walking == false)
+        {
+            words.start.layer = 6;
+            words.SwitchState(words.clearGroundState);
+        }
     }
 
     public override void UpdateState(WordsStateManager words)
     {
         if (Input.GetMouseButtonDown(0) && words.agent.isStopped == true)
         {
+            Debug.Log("sadaaaa");
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
@@ -63,23 +73,9 @@ public class CharacterMoveState : WordsBaseState
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
-            //if (words.ground == words.beforeToFinish)
-            //{
-            //    words.agent.SetDestination(words.finishGround.transform.position);
-            //}
-            //else
-            //{
-            //    words.ground.transform.parent.gameObject.layer = 3;
-            //    words.SwitchState(words.clearState);
-            //}
-            //words.ground.transform.parent.gameObject.layer = 3;
-            //if (words.fish != null)
-            //{
-            //    words.fish.SetActive(false);
-            //}
-            if (Button.button.buttonClickCount == 1)
+            if (UIManager.uIManager.skillActive == true)
             {
-                Button.button.buttonClickCount++;
+                UIManager.uIManager.skillActive = false;
                 words.SwitchState(words.snowGlobeState);
                 return;
             }

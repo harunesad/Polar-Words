@@ -34,8 +34,8 @@ public class WordsClearGroundState : WordsBaseState
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
+                        //UIManager.uIManager.skillActive = true;
                         words.camLook.FirstPos();
-                        //words.SwitchState(words.selectState);
                     }
                     else if (words.words.Count == 2 && words.ground != words.start)
                     {
@@ -43,8 +43,8 @@ public class WordsClearGroundState : WordsBaseState
                         words.ýnputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
+                        //Button.button.skillActive = true;
                         words.camLook.FirstPos();
-                        //words.SwitchState(words.selectState);
                     }
                     else
                     {

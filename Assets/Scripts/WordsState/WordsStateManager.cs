@@ -11,6 +11,7 @@ public class WordsStateManager : MonoBehaviour
     public TextMeshProUGUI ýnputWord;
     public List<string> keyWord;
     public List<GameObject> words;
+    public List<GameObject> iceWords;
     public List<string> myWord;
     public GameObject ground;
     public GameObject finishGround;
