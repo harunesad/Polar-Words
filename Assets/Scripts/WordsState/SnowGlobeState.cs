@@ -19,7 +19,7 @@ public class SnowGlobeState : WordsBaseState
                     //Button.button.skillActive = true;
                     words.firstGround.layer = 7;
                     words.firstGround.transform.parent.gameObject.layer = 3;
-                    words.ýnputWord.text = "";
+                    words.inputWord.text = "";
                     CamLook.cam.FirstPos();
                     return;
                     //words.words
@@ -27,20 +27,20 @@ public class SnowGlobeState : WordsBaseState
         }
         //if (words.ground != words.start && words.words.Count == 1 && !words.words.Contains(words.ground))
         //{
-        //    words.ýnputWord.text = "";
+        //    words.ï¿½nputWord.text = "";
         //    CamLook.cam.FirstPos();
         //    return;
         //}
         //if (words.ground != words.start && words.words.Count == 2 && words.words.Contains(words.ground.transform.parent.gameObject))
         //{
-        //    words.ýnputWord.text = "";
+        //    words.ï¿½nputWord.text = "";
         //    Debug.Log("ddd");
         //    CamLook.cam.FirstPos();
         //    return;
         //}
         //if (words.ground == words.start && words.words.Count == 1)
         //{
-        //    words.ýnputWord.text = "";
+        //    words.ï¿½nputWord.text = "";
         //    CamLook.cam.FirstPos();
         //    return;
         //}
@@ -50,7 +50,7 @@ public class SnowGlobeState : WordsBaseState
         //    words.words.RemoveAt(words.words.Count - 1);
         //    words.SwitchState(words.snowGlobeState);
         //}
-        words.ýnputWord.text = "";
+        words.inputWord.text = "";
         //Button.button.skillActive = true;
         CamLook.cam.FirstPos();
     }

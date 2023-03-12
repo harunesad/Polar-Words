@@ -31,7 +31,7 @@ public class WordsClearGroundState : WordsBaseState
                     if (words.words.Count == 1 && words.ground == words.start)
                     {
                         index = 0;
-                        words.ýnputWord.text = "";
+                        words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
                         //UIManager.uIManager.skillActive = true;
@@ -40,7 +40,7 @@ public class WordsClearGroundState : WordsBaseState
                     else if (words.words.Count == 2 && words.ground != words.start)
                     {
                         index = 0;
-                        words.ýnputWord.text = "";
+                        words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
                         //Button.button.skillActive = true;

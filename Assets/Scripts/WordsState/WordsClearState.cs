@@ -30,7 +30,7 @@ public class WordsClearState : WordsBaseState
                     {
                         Navmesh.navmesh.NavMeshSurfaces();
                         index = 0;
-                        words.ýnputWord.text = "";
+                        words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
                         //Button.button.skillActive = true;
@@ -41,7 +41,7 @@ public class WordsClearState : WordsBaseState
                     {
                         Navmesh.navmesh.NavMeshSurfaces();
                         index = 0;
-                        words.ýnputWord.text = "";
+                        words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.layer = 7;
                         ////Button.button.skillActive = true;

@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
             {
                 wordsState.words[i].GetComponent<Renderer>().materials[1].color = wordsState.firstColor;
             }
-            wordsState.ýnputWord.text = "";
+            wordsState.inputWord.text = "";
             for (int i = 0; i < wordsState.words.Count; i++)
             {
                 if (wordsState.ground.transform.parent.gameObject != wordsState.words[i] && wordsState.finishGround.transform.parent.gameObject != wordsState.words[i])
@@ -54,18 +54,18 @@ public class UIManager : MonoBehaviour
     }
     public void Answer()
     {
-        string ýnputWord = wordsState.ýnputWord.text;
-        var word = ýnputWord.ToCharArray();
-        ýnputWord = "";
+        string inputWord = wordsState.inputWord.text;
+        var word = inputWord.ToCharArray();
+        inputWord = "";
         for (int i = 0; i < word.Length; i++)
         {
             if (word[i]== 'I')
             {
                 word[i]= 'i';
             }
-            ýnputWord = ýnputWord + word[i];
+            inputWord = inputWord + word[i];
         }
-        if (wordsState.currentState == wordsState.selectState && newWord.Contains(ýnputWord.ToLower()))
+        if (wordsState.currentState == wordsState.selectState && newWord.Contains(inputWord.ToLower()))
         {
             //for (int i = 0; i < lines.Length; i++)
             //{
@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
             //    Debug.Log(word);
             //    newWords.Add(word);
             //}
-            //if (newWord.Contains(wordsState.ýnputWord.text.ToLower()))
+            //if (newWord.Contains(wordsState.ï¿½nputWord.text.ToLower()))
             //{
             //    CamLook.cam.SecondPos();
             //}
@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
         }
         //for (int i = 0; i < wordsState.keyWord.Count; i++)
         //{
-        //    if (wordsState.ýnputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
+        //    if (wordsState.ï¿½nputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
         //    {
         //        //camLook.enabled = true;
         //        //wordsState.SwitchState(wordsState.fillingState);

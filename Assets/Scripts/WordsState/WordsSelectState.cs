@@ -31,7 +31,7 @@ public class WordsSelectState : WordsBaseState
                 words.firstColor = hit.transform.GetComponent<Renderer>().materials[1].color;
                 hit.transform.GetComponent<Renderer>().materials[1].color = words.lastColor;
 
-                words.ýnputWord.text = words.ýnputWord.text + hit.transform.name;
+                words.inputWord.text = words.inputWord.text + hit.transform.name;
                 words.words.Add(hit.transform.gameObject);
                 hit.transform.gameObject.layer = 9;
             }
@@ -40,7 +40,7 @@ public class WordsSelectState : WordsBaseState
                 hit.transform.gameObject.layer = 3;
                 hit.transform.GetComponent<Renderer>().materials[1].color = words.firstColor;
 
-                var word = words.ýnputWord.text.ToCharArray();
+                var word = words.inputWord.text.ToCharArray();
 
                 for (int i = 0; i < word.Length; i++)
                 {
@@ -48,11 +48,11 @@ public class WordsSelectState : WordsBaseState
                 }
 
                 words.myWord.Remove(hit.transform.name);
-                words.ýnputWord.text = "";
+                words.inputWord.text = "";
 
                 for (int i = 0; i < words.myWord.Count; i++)
                 {
-                    words.ýnputWord.text = words.ýnputWord.text + words.myWord[i];
+                    words.inputWord.text = words.inputWord.text + words.myWord[i];
                 }
                 words.myWord.Clear();
                 words.words.Remove(hit.transform.gameObject);

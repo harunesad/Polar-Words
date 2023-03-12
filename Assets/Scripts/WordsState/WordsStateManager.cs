@@ -8,7 +8,7 @@ public class WordsStateManager : MonoBehaviour
 {
     public static WordsStateManager wordsState;
     public LayerMask wordMask, groundMask, wordSelectMask;
-    public TextMeshProUGUI ýnputWord;
+    public TextMeshProUGUI inputWord;
     public List<string> keyWord;
     public List<GameObject> words;
     public List<GameObject> iceWords;
