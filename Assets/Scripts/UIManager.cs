@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,11 +6,11 @@ using System.IO;
 public class UIManager : MonoBehaviour
 {
     public static UIManager uIManager;
-    CamLook camLook;
-    WordsStateManager wordsState;
+    CamLook _camLook;
+    WordsStateManager _wordsState;
     public GameObject snowGlobe;
-    string[] lines;
-    List<string> newWord;
+    string[] _lines;
+    List<string> _newWord;
     public bool buttonClick;
     public bool skillActive;
     private void Awake()
@@ -19,12 +18,12 @@ public class UIManager : MonoBehaviour
         uIManager = this;
 
         string filePath = Application.dataPath + "/dictionary.csv";
-        lines = File.ReadAllLines(filePath);
-        newWord = new List<string>(lines);
-        newWord.AddRange(lines);
+        _lines = File.ReadAllLines(filePath);
+        _newWord = new List<string>(_lines);
+        _newWord.AddRange(_lines);
 
-        camLook = FindObjectOfType<CamLook>();
-        wordsState = FindObjectOfType<WordsStateManager>();
+        _camLook = FindObjectOfType<CamLook>();
+        _wordsState = FindObjectOfType<WordsStateManager>();
         snowGlobe.GetComponent<Button>().onClick.AddListener(SnowGlobe);
     }
     //void Start()
@@ -34,19 +33,25 @@ public class UIManager : MonoBehaviour
     //}
     public void DeleteWord()
     {
-        if (camLook.gameObject.transform.localEulerAngles.x == 90 && wordsState.currentState == wordsState.selectState)
+        if ((int)_camLook.gameObject.transform.localEulerAngles.x == 90 && _wordsState.currentState == _wordsState.selectState)
         {
-            for (int i = 0; i < wordsState.words.Count; i++)
+            foreach (var words in _wordsState.words)
             {
-                wordsState.words[i].GetComponent<Renderer>().materials[1].color = wordsState.firstColor;
+                words.GetComponent<Renderer>().materials[1].color = _wordsState.firstColor;
             }
-            wordsState.inputWord.text = "";
-            for (int i = 0; i < wordsState.words.Count; i++)
+            /*
+            for (int i = 0; i < _wordsState.words.Count; i++)
             {
-                if (wordsState.ground.transform.parent.gameObject != wordsState.words[i] && wordsState.finishGround.transform.parent.gameObject != wordsState.words[i])
+                _wordsState.words[i].GetComponent<Renderer>().materials[1].color = _wordsState.firstColor;
+            }
+            */
+            _wordsState.inputWord.text = "";
+            for (int i = 0; i < _wordsState.words.Count; i++)
+            {
+                if (_wordsState.ground.transform.parent.gameObject != _wordsState.words[i] && _wordsState.finishGround.transform.parent.gameObject != _wordsState.words[i])
                 {
-                    wordsState.words[i].layer = 3;
-                    wordsState.words.RemoveAt(i);
+                    _wordsState.words[i].layer = 3;
+                    _wordsState.words.RemoveAt(i);
                     i--;
                 }
             }
@@ -54,7 +59,7 @@ public class UIManager : MonoBehaviour
     }
     public void Answer()
     {
-        string inputWord = wordsState.inputWord.text;
+        string inputWord = _wordsState.inputWord.text;
         var word = inputWord.ToCharArray();
         inputWord = "";
         for (int i = 0; i < word.Length; i++)
@@ -65,7 +70,7 @@ public class UIManager : MonoBehaviour
             }
             inputWord = inputWord + word[i];
         }
-        if (wordsState.currentState == wordsState.selectState && newWord.Contains(inputWord.ToLower()))
+        if (_wordsState.currentState == _wordsState.selectState && _newWord.Contains(inputWord.ToLower()))
         {
             //for (int i = 0; i < lines.Length; i++)
             //{
@@ -75,12 +80,12 @@ public class UIManager : MonoBehaviour
             //    Debug.Log(word);
             //    newWords.Add(word);
             //}
-            //if (newWord.Contains(wordsState.�nputWord.text.ToLower()))
+            //if (newWord.Contains(wordsState.inputWord.text.ToLower()))
             //{
             //    CamLook.cam.SecondPos();
             //}
             //skillActive = false;
-            if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f) && buttonClick == true)
+            if (buttonClick == true && snowGlobe.GetComponent<Image>().color == new Color(r:1, 1, 1, 0.5f))
             {
                 skillActive = true;
                 buttonClick = false;
@@ -90,7 +95,7 @@ public class UIManager : MonoBehaviour
         }
         //for (int i = 0; i < wordsState.keyWord.Count; i++)
         //{
-        //    if (wordsState.�nputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
+        //    if (wordsState.inputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
         //    {
         //        //camLook.enabled = true;
         //        //wordsState.SwitchState(wordsState.fillingState);
@@ -100,7 +105,7 @@ public class UIManager : MonoBehaviour
     }
     public void SnowGlobe()
     {
-        if (wordsState.currentState == wordsState.selectState && skillActive == false)
+        if (_wordsState.currentState == _wordsState.selectState && skillActive == false)
         {
             buttonClick = !buttonClick;
             //bool state = snowGlobe.activeSelf;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,15 +16,15 @@ public class WordsFinishState : WordsBaseState
         {
             int levelId = SceneManager.GetActiveScene().buildIndex;
             //GameObject fish = GameObject.Find("Fish");
-            int fishCount = GameObject.FindObjectsOfType<FishCollision>().Length;
+            int fishCount = GameObject.FindObjectsOfType<Collisions.FishCollision>().Length;
 
-            JsonSave.json.so.levelFinish[levelId].levelState = true;
+            Json.JsonSave.json.so.levelFinish[levelId].levelState = true;
 
             if (words.startFishCount > 0 && fishCount == 0)
             {
-                JsonSave.json.so.levelFinish[JsonSave.json.so.fishLevel].fishState = true;
+                Json.JsonSave.json.so.levelFinish[Json.JsonSave.json.so.fishLevel].fishState = true;
             }
-            JsonSave.json.Save();
+            Json.JsonSave.json.Save();
         }
     }
 }

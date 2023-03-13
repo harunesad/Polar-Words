@@ -1,26 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class WordsFillingState : WordsBaseState
 {
-    int index;
+    int _index;
     public override void EnterState(WordsStateManager words)
     {
-        GameObject hextileIce = words.words[index].transform.GetChild(0).gameObject;
-        if (words.ground != hextileIce && words.finishGround != hextileIce)
+        GameObject ice = words.words[_index].transform.GetChild(0).gameObject;
+        if (words.ground != ice && words.finishGround != ice)
         {
-            hextileIce.transform.DOScale(new Vector3(0.5f, 0.5f, 1), 0.6f).SetEase(Ease.Linear);
-            hextileIce.transform.DOMoveY(0.12f, 0.6f).SetEase(Ease.Linear).OnComplete(
+            ice.transform.DOScale(new Vector3(0.5f, 0.5f, 1), 0.6f).SetEase(Ease.Linear);
+            ice.transform.DOMoveY(0.12f, 0.6f).SetEase(Ease.Linear).OnComplete(
         () =>
         {
-            index++;
-            if (index == words.words.Count)
+            _index++;
+            if (_index == words.words.Count)
             {
                 Navmesh.navmesh.NavMeshSurfaces();
-                index = 0;
-                words.start.layer = 7;
+                _index = 0;
+                words.startGround.transform.GetChild(0).gameObject.layer = 7;
                 if (UIManager.uIManager.skillActive == true)
                 {
                     for (int i = words.words.Count - 1; i > 0; i--)
@@ -42,22 +40,17 @@ public class WordsFillingState : WordsBaseState
                 words.SwitchState(words.moveState);
                 return;
             }
-            //else
-            //{
-            //    //Navmesh.navmesh.NavMeshSurfaces();
-            //    words.SwitchState(words.fillingState);
-            //}
             words.SwitchState(words.fillingState);
         });
-            return;
+            //return;
         }
-        //else
-        //{
-        //    index++;
-        //    words.SwitchState(words.fillingState);
-        //}
-        index++;
-        words.SwitchState(words.fillingState);
+        else if (words.ground == ice || words.finishGround == ice)
+        {
+            _index++;
+            words.SwitchState(words.fillingState);
+        }
+        //_index++;
+        //words.SwitchState(words.fillingState);
 
     }
 

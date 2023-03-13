@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -8,7 +6,7 @@ public class SnowGlobeState : WordsBaseState
     public override void EnterState(WordsStateManager words)
     {
         Debug.Log("a");
-        if (words.firstGround != null && words.start != words.firstGround)
+        if (words.firstGround != null && words.startGround.transform.GetChild(0).gameObject != words.firstGround)
         {
             words.firstGround.transform.parent.GetComponent<Renderer>().materials[1].color = words.firstColor;
             words.firstGround.transform.DOMoveY(-0.25f, 0.6f).SetEase(Ease.Linear).OnComplete(
@@ -27,20 +25,20 @@ public class SnowGlobeState : WordsBaseState
         }
         //if (words.ground != words.start && words.words.Count == 1 && !words.words.Contains(words.ground))
         //{
-        //    words.�nputWord.text = "";
+        //    words.inputWord.text = "";
         //    CamLook.cam.FirstPos();
         //    return;
         //}
         //if (words.ground != words.start && words.words.Count == 2 && words.words.Contains(words.ground.transform.parent.gameObject))
         //{
-        //    words.�nputWord.text = "";
+        //    words.inputWord.text = "";
         //    Debug.Log("ddd");
         //    CamLook.cam.FirstPos();
         //    return;
         //}
         //if (words.ground == words.start && words.words.Count == 1)
         //{
-        //    words.�nputWord.text = "";
+        //    words.inputWord.text = "";
         //    CamLook.cam.FirstPos();
         //    return;
         //}

@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class CamLook : MonoBehaviour
 {
     public static CamLook cam;
-    WordsStateManager wordsState;
+    WordsStateManager _wordsState;
     public GameObject firstPoint;
     private void Awake()
     {
         cam = this;
-        wordsState = FindObjectOfType<WordsStateManager>();
+        _wordsState = FindObjectOfType<WordsStateManager>();
     }
     //private void OnEnable()
     //{
@@ -32,13 +30,14 @@ public class CamLook : MonoBehaviour
         transform.DORotate(new Vector3(90, 0, 0), 2).SetEase(Ease.Linear).OnComplete(
         () =>
         {
-            wordsState.SwitchState(wordsState.selectState);
+            _wordsState.SwitchState(_wordsState.selectState);
             //this.enabled = false;
         });
     }
-    public void SecondPos() 
+    public void SecondPos()
     {
-        Vector3 pos = new Vector3(firstPoint.transform.position.x, transform.position.y, firstPoint.transform.position.z - 1);
+        Vector3 pointPos = firstPoint.transform.position;
+        Vector3 pos = new Vector3(pointPos.x, transform.position.y,pointPos.z - 1);
         transform.DOMove(pos, 2).SetEase(Ease.Linear);
         transform.DORotate(new Vector3(45, 30, 0), 2).SetEase(Ease.Linear).OnComplete(
             () =>
@@ -52,7 +51,7 @@ public class CamLook : MonoBehaviour
                 //{
                 //    wordsState.SwitchState(wordsState.fillingState);
                 //}
-                wordsState.SwitchState(wordsState.fillingState);
+                _wordsState.SwitchState(_wordsState.fillingState);
                 //this.enabled = false;
             });
     }

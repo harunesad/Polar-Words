@@ -1,32 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class JsonSave : MonoBehaviour
+namespace Json
 {
-    public static JsonSave json;
-    public SaveObject so;
-    private void Awake()
+    public class JsonSave : MonoBehaviour
     {
-        json = this;
-    }
-    private void Start()
-    {
-        //so.fishCount = 0;
-        //for (int i = 0; i < so.levelFinish.Count; i++)
-        //{
-        //    so.levelFinish[i].fishState = false;
-        //    so.levelFinish[i].levelState = false;
-        //}
-        //Save();
-        Load();
-    }
-    public void Save()
-    {
-        SaveManager.Save(so);
-    }
-    public void Load()
-    {
-        so = SaveManager.Load();
+        public static JsonSave json;
+        public SaveObject so;
+        private void Awake()
+        {
+            json = this;
+        }
+        private void Start()
+        {
+            //so.fishCount = 0;
+            //for (int i = 0; i < so.levelFinish.Count; i++)
+            //{
+            //    so.levelFinish[i].fishState = false;
+            //    so.levelFinish[i].levelState = false;
+            //}
+            //Save();
+            Load();
+        }
+        public void Save()
+        {
+            SaveManager.Save(so);
+        }
+        void Load()
+        {
+            so = SaveManager.Load();
+        }
     }
 }
+

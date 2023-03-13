@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -9,18 +8,15 @@ public class WordsStateManager : MonoBehaviour
     public static WordsStateManager wordsState;
     public LayerMask wordMask, groundMask, wordSelectMask;
     public TextMeshProUGUI inputWord;
-    public List<string> keyWord;
     public List<GameObject> words;
     public List<GameObject> iceWords;
     public List<string> myWord;
     public GameObject ground;
     public GameObject finishGround;
-    public GameObject beforeToFinish;
-    public GameObject fish;
     public NavMeshAgent agent;
     public Vector3 point;
     public GameObject polar;
-    public GameObject start;
+    public GameObject startGround;
     public GameObject firstGround;
     public CamLook camLook;
     public Color firstColor;
@@ -39,7 +35,7 @@ public class WordsStateManager : MonoBehaviour
     {
         wordsState = this;
         words.Add(finishGround.transform.parent.gameObject);
-        startFishCount = FindObjectsOfType<FishCollision>().Length;
+        startFishCount = FindObjectsOfType<Collisions.FishCollision>().Length;
     }
     void Start()
     {
@@ -48,6 +44,7 @@ public class WordsStateManager : MonoBehaviour
     }
     void Update()
     {
+        //Debug.Log(currentState);
         currentState.UpdateState(this);
     }
     public void SwitchState(WordsBaseState state)

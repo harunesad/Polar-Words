@@ -1,47 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class CharacterMoveState : WordsBaseState
 {
-    GameObject clickObj;
-    bool walking;
+    GameObject _clickObj;
+    bool _walking;
     public override void EnterState(WordsStateManager words)
     {
         words.point = Vector3.zero;
         words.agent.isStopped = true;
         words.firstGround = words.ground;
-        walking = false;
+        words.startGround.transform.GetChild(0).gameObject.layer = 7;
+        _walking = false;
         //words.ground.layer = 6;
         //Navmesh.navmesh.NavMeshSurfaces();
-        Debug.Log(words.agent.isStopped);
         for (int i = words.words.Count - 1; i > 0; i--)
         {
-            if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6)
+            if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6 || words.finishGround.transform.GetChild(0).gameObject.layer == 6)
             {
-                walking = true;
+                _walking = true;
             }
         }
         for (int i = 0; i < words.iceWords.Count; i++)
         {
             if (words.iceWords.Count > 0 && words.iceWords[i].transform.GetChild(0).gameObject.layer == 6)
             {
-                walking = true;
+                _walking = true;
             }
         }
-        if (UIManager.uIManager.skillActive == true && walking == false)
+        if (UIManager.uIManager.skillActive == true && _walking == false)
         {
             words.firstGround = null;
             UIManager.uIManager.skillActive = false;
             words.SwitchState(words.snowGlobeState);
         }
-        if (UIManager.uIManager.skillActive == false && walking == false)
+        if (UIManager.uIManager.skillActive == false && _walking == false)
         {
-            words.start.layer = 6;
+            words.startGround.transform.GetChild(0).gameObject.layer = 6;
             words.SwitchState(words.clearGroundState);
         }
     }
@@ -50,17 +45,16 @@ public class CharacterMoveState : WordsBaseState
     {
         if (Input.GetMouseButtonDown(0) && words.agent.isStopped == true)
         {
-            Debug.Log("sadaaaa");
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, words.groundMask))
             {
-                clickObj = hit.transform.gameObject;
+                _clickObj = hit.transform.gameObject;
                 Vector3 hitPos = hit.transform.position;
                 words.point = new Vector3(hitPos.x, words.polar.transform.position.y, hitPos.z);
                 words.agent.isStopped = false;
             }
-            if (clickObj == words.finishGround)
+            if (_clickObj.transform.parent.gameObject == words.finishGround)
             {
                 words.SwitchState(words.finishState);
                 return;
