@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
             //    CamLook.cam.SecondPos();
             //}
             //skillActive = false;
-            if (buttonClick == true && snowGlobe.GetComponent<Image>().color == new Color(r:1, 1, 1, 0.5f))
+            if (buttonClick && snowGlobe.GetComponent<Image>().color == new Color(r:1, 1, 1, 0.5f))
             {
                 skillActive = true;
                 buttonClick = false;

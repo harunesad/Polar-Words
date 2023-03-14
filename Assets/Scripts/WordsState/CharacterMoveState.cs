@@ -7,6 +7,25 @@ public class CharacterMoveState : WordsBaseState
     bool _walking;
     public override void EnterState(WordsStateManager words)
     {
+        if (UIManager.uIManager.skillActive)
+        {
+            for (int i = words.words.Count - 1; i > 0; i--)
+            {
+                if (words.ground.transform.parent.gameObject != words.words[i])
+                {
+                    words.words[i].layer = 0;
+                    words.iceWords.Add(words.words[i]);
+                }
+            }
+            for (int i = words.words.Count - 1; i > 0; i--)
+            {
+                if (words.words[i] != words.ground.transform.parent.gameObject)
+                {
+                    words.words.RemoveAt(i);
+                }
+            }
+        }
+
         words.point = Vector3.zero;
         words.agent.isStopped = true;
         words.firstGround = words.ground;
@@ -28,7 +47,7 @@ public class CharacterMoveState : WordsBaseState
                 _walking = true;
             }
         }
-        if (UIManager.uIManager.skillActive == true && _walking == false)
+        if (UIManager.uIManager.skillActive && _walking == false)
         {
             words.firstGround = null;
             UIManager.uIManager.skillActive = false;
@@ -43,7 +62,7 @@ public class CharacterMoveState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
-        if (Input.GetMouseButtonDown(0) && words.agent.isStopped == true)
+        if (Input.GetMouseButtonDown(0) && words.agent.isStopped)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,7 +86,7 @@ public class CharacterMoveState : WordsBaseState
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
-            if (UIManager.uIManager.skillActive == true)
+            if (UIManager.uIManager.skillActive)
             {
                 UIManager.uIManager.skillActive = false;
                 words.SwitchState(words.snowGlobeState);

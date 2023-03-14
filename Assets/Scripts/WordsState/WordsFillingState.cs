@@ -19,24 +19,6 @@ public class WordsFillingState : WordsBaseState
                 Navmesh.navmesh.NavMeshSurfaces();
                 _index = 0;
                 words.startGround.transform.GetChild(0).gameObject.layer = 7;
-                if (UIManager.uIManager.skillActive == true)
-                {
-                    for (int i = words.words.Count - 1; i > 0; i--)
-                    {
-                        if (words.ground.transform.parent.gameObject != words.words[i])
-                        {
-                            words.words[i].layer = 0;
-                            words.iceWords.Add(words.words[i]);
-                        }
-                    }
-                    for (int i = words.words.Count - 1; i > 0; i--)
-                    {
-                        if (words.words[i] != words.ground.transform.parent.gameObject)
-                        {
-                            words.words.RemoveAt(i);
-                        }
-                    }
-                }
                 words.SwitchState(words.moveState);
                 return;
             }

@@ -24,13 +24,13 @@ public class WordsStateManager : MonoBehaviour
     public int startFishCount;
 
     public WordsBaseState currentState;
-    public WordsSelectState selectState = new WordsSelectState();
-    public WordsFillingState fillingState = new WordsFillingState();
-    public CharacterMoveState moveState = new CharacterMoveState();
-    public WordsClearState clearState = new WordsClearState();
-    public WordsFinishState finishState = new WordsFinishState();
-    public WordsClearGroundState clearGroundState = new WordsClearGroundState();
-    public SnowGlobeState snowGlobeState = new SnowGlobeState();
+    public readonly WordsSelectState selectState = new WordsSelectState();
+    public readonly WordsFillingState fillingState = new WordsFillingState();
+    public readonly CharacterMoveState moveState = new CharacterMoveState();
+    public readonly WordsClearState clearState = new WordsClearState();
+    public readonly WordsFinishState finishState = new WordsFinishState();
+    public readonly WordsClearGroundState clearGroundState = new WordsClearGroundState();
+    public readonly SnowGlobeState snowGlobeState = new SnowGlobeState();
     private void Awake()
     {
         wordsState = this;
