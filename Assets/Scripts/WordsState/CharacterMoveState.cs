@@ -40,6 +40,15 @@ public class CharacterMoveState : WordsBaseState
                 _walking = true;
             }
         }
+
+        foreach (var iceWords in words.iceWords)
+        {
+            if (words.iceWords.Count > 0 && iceWords.transform.GetChild(0).gameObject.layer == 6)
+            {
+                
+            }
+        }
+        /*
         for (int i = 0; i < words.iceWords.Count; i++)
         {
             if (words.iceWords.Count > 0 && words.iceWords[i].transform.GetChild(0).gameObject.layer == 6)
@@ -47,6 +56,7 @@ public class CharacterMoveState : WordsBaseState
                 _walking = true;
             }
         }
+        */
         if (UIManager.uIManager.skillActive && _walking == false)
         {
             words.firstGround = null;
@@ -78,10 +88,13 @@ public class CharacterMoveState : WordsBaseState
                 words.SwitchState(words.finishState);
                 return;
             }
+            words.agent.SetDestination(words.point);
+            /*
             else
             {
                 words.agent.SetDestination(words.point);
             }
+        */
         }
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
