@@ -44,7 +44,6 @@ public class WordsStateManager : MonoBehaviour
     }
     void Update()
     {
-        //Debug.Log(currentState);
         currentState.UpdateState(this);
     }
     public void SwitchState(WordsBaseState state)

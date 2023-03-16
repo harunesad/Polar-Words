@@ -9,13 +9,6 @@ public class Navmesh : MonoBehaviour
     {
         navmesh = this;
     }
-    ////private void Update()
-    ////{
-    ////    if (Input.GetKeyDown(KeyCode.Space))
-    ////    {
-    ////        NavMeshSurfaces();
-    ////    }
-    ////}
     public void NavMeshSurfaces()
     {
         navMeshSurfaces.BuildNavMesh();

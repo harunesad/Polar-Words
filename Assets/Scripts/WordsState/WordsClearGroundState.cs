@@ -22,7 +22,6 @@ public class WordsClearGroundState : WordsBaseState
             words.words[_index].transform.GetChild(0).DOMoveY(-0.25f, 0.6f).OnComplete(
                 () =>
                 {
-                    //Navmesh.navmesh.NavMeshSurfaces();
                     words.words.RemoveAt(_index);
                     if (words.words.Count == 1 && words.ground == words.startGround.transform.GetChild(0).gameObject)
                     {
@@ -30,22 +29,19 @@ public class WordsClearGroundState : WordsBaseState
                         words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.transform.GetChild(0).gameObject.layer = 7;
-                        //UIManager.uIManager.skillActive = true;
                         words.camLook.FirstPos();
+                        return;
                     }
-                    else if (words.words.Count == 2 && words.ground != words.startGround.transform.GetChild(0).gameObject)
+                    if (words.words.Count == 2 && words.ground != words.startGround.transform.GetChild(0).gameObject)
                     {
                         _index = 0;
                         words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.transform.GetChild(0).gameObject.layer = 7;
-                        //Button.button.skillActive = true;
                         words.camLook.FirstPos();
+                        return;
                     }
-                    else
-                    {
-                        words.SwitchState(words.clearGroundState);
-                    }
+                    words.SwitchState(words.clearGroundState);
                 });
         }
     }

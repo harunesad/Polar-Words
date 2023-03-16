@@ -22,27 +22,22 @@ public class WordsClearState : WordsBaseState
             words.words[_index].transform.GetChild(0).DOMoveY(-0.25f, 0.6f).SetEase(Ease.Linear).OnComplete(
                 () =>
                 {
-                    //Navmesh.navmesh.NavMeshSurfaces();
                     words.words.RemoveAt(_index);
                     if (words.words.Count == 2 && words.words.Contains(words.ground.transform.parent.gameObject))
                     {
-                        Navmesh.navmesh.NavMeshSurfaces();
                         _index = 0;
                         words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.transform.GetChild(0).gameObject.layer = 7;
-                        //Button.button.skillActive = true;
                         CamLook.cam.FirstPos();
                         return;
                     }
-                    else  if(words.words.Count == 1 && !words.words.Contains(words.ground.transform.parent.gameObject))
+                    if (words.words.Count == 1 && !words.words.Contains(words.ground.transform.parent.gameObject))
                     {
-                        Navmesh.navmesh.NavMeshSurfaces();
                         _index = 0;
                         words.inputWord.text = "";
                         words.ground.transform.parent.gameObject.layer = 0;
                         words.finishGround.transform.GetChild(0).gameObject.layer = 7;
-                        ////Button.button.skillActive = true;
                         CamLook.cam.FirstPos();
                         return;
                     }

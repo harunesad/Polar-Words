@@ -5,8 +5,6 @@ public class WordsFinishState : WordsBaseState
 {
     public override void EnterState(WordsStateManager words)
     {
-        Debug.Log("s");
-        //CamLook.cam.SecondPos();
         words.agent.SetDestination(words.point);
     }
 
@@ -15,7 +13,6 @@ public class WordsFinishState : WordsBaseState
         if (Vector3.Distance(words.polar.transform.position, words.point) < 0.1f)
         {
             int levelId = SceneManager.GetActiveScene().buildIndex;
-            //GameObject fish = GameObject.Find("Fish");
             int fishCount = GameObject.FindObjectsOfType<Collisions.FishCollision>().Length;
 
             Json.JsonSave.json.so.levelFinish[levelId].levelState = true;

@@ -16,7 +16,6 @@ public class WordsFillingState : WordsBaseState
             _index++;
             if (_index == words.words.Count)
             {
-                Navmesh.navmesh.NavMeshSurfaces();
                 _index = 0;
                 words.startGround.transform.GetChild(0).gameObject.layer = 7;
                 words.SwitchState(words.moveState);
@@ -24,16 +23,12 @@ public class WordsFillingState : WordsBaseState
             }
             words.SwitchState(words.fillingState);
         });
-            //return;
         }
         else if (words.ground == ice || words.finishGround == ice)
         {
             _index++;
             words.SwitchState(words.fillingState);
         }
-        //_index++;
-        //words.SwitchState(words.fillingState);
-
     }
 
     public override void UpdateState(WordsStateManager words)

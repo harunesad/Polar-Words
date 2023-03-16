@@ -10,13 +10,6 @@ public class WordsSelectState : WordsBaseState
 
     public override void UpdateState(WordsStateManager words)
     {
-        //if (words.finishGround.layer == 6)
-        //{
-        //    words.point = new Vector3(words.finishGround.transform.position.x, words.polar.transform.position.y, words.finishGround.transform.position.z);
-        //    words._camLook.enabled = true;
-        //    words.SwitchState(words.finishState);
-        //    return;
-        //}
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -41,12 +34,6 @@ public class WordsSelectState : WordsBaseState
                 {
                     words.myWord.Add(letters.ToString());
                 }
-                /*
-                for (int i = 0; i < word.Length; i++)
-                {
-                    words.myWord.Add(word[i].ToString());
-                }
-                */
 
                 words.myWord.Remove(hit.transform.name);
                 words.inputWord.text = "";
@@ -55,12 +42,6 @@ public class WordsSelectState : WordsBaseState
                 {
                     words.inputWord.text = words.inputWord.text + myWord;
                 }
-                /*
-                for (int i = 0; i < words.myWord.Count; i++)
-                {
-                    words.inputWord.text = words.inputWord.text + words.myWord[i];
-                }
-                */
                 words.myWord.Clear();
                 words.words.Remove(hit.transform.gameObject);
             }

@@ -31,8 +31,7 @@ public class CharacterMoveState : WordsBaseState
         words.firstGround = words.ground;
         words.startGround.transform.GetChild(0).gameObject.layer = 7;
         _walking = false;
-        //words.ground.layer = 6;
-        //Navmesh.navmesh.NavMeshSurfaces();
+        Navmesh.navmesh.NavMeshSurfaces();
         for (int i = words.words.Count - 1; i > 0; i--)
         {
             if (words.words[i] != words.ground.transform.parent.gameObject && words.words[i].transform.GetChild(0).gameObject.layer == 6 || words.finishGround.transform.GetChild(0).gameObject.layer == 6)
@@ -45,18 +44,9 @@ public class CharacterMoveState : WordsBaseState
         {
             if (words.iceWords.Count > 0 && iceWords.transform.GetChild(0).gameObject.layer == 6)
             {
-                
-            }
-        }
-        /*
-        for (int i = 0; i < words.iceWords.Count; i++)
-        {
-            if (words.iceWords.Count > 0 && words.iceWords[i].transform.GetChild(0).gameObject.layer == 6)
-            {
                 _walking = true;
             }
         }
-        */
         if (UIManager.uIManager.skillActive && _walking == false)
         {
             words.firstGround = null;
@@ -89,12 +79,6 @@ public class CharacterMoveState : WordsBaseState
                 return;
             }
             words.agent.SetDestination(words.point);
-            /*
-            else
-            {
-                words.agent.SetDestination(words.point);
-            }
-        */
         }
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)

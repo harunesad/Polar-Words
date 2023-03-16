@@ -11,18 +11,6 @@ public class CamLook : MonoBehaviour
         cam = this;
         _wordsState = FindObjectOfType<WordsStateManager>();
     }
-    //private void OnEnable()
-    //{
-    //    //if (wordsState.currentState == wordsState.selectState)
-    //    //{
-    //    //    SecondPos();
-    //    //}
-    //    //if (wordsState.currentState == wordsState.clearState)
-    //    //{
-    //    //    FirstPos();
-    //    //}
-    //    //SecondPos();
-    //}
     public void FirstPos()
     {
         Vector3 pos = new Vector3(0, 5, 0);
@@ -31,7 +19,6 @@ public class CamLook : MonoBehaviour
         () =>
         {
             _wordsState.SwitchState(_wordsState.selectState);
-            //this.enabled = false;
         });
     }
     public void SecondPos()
@@ -42,17 +29,7 @@ public class CamLook : MonoBehaviour
         transform.DORotate(new Vector3(45, 30, 0), 2).SetEase(Ease.Linear).OnComplete(
             () =>
             {
-                //wordsState.SwitchState(wordsState.fillingState);
-                //if (wordsState.currentState == wordsState.finishState)
-                //{
-                //    wordsState.agent.SetDestination(wordsState.point);
-                //}
-                //if (wordsState.currentState == wordsState.selectState)
-                //{
-                //    wordsState.SwitchState(wordsState.fillingState);
-                //}
                 _wordsState.SwitchState(_wordsState.fillingState);
-                //this.enabled = false;
             });
     }
 }

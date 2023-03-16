@@ -26,11 +26,6 @@ public class UIManager : MonoBehaviour
         _wordsState = FindObjectOfType<WordsStateManager>();
         snowGlobe.GetComponent<Button>().onClick.AddListener(SnowGlobe);
     }
-    //void Start()
-    //{
-    //    camLook = FindObjectOfType<CamLook>();
-    //    wordsState = FindObjectOfType<WordsStateManager>();
-    //}
     public void DeleteWord()
     {
         if ((int)_camLook.gameObject.transform.localEulerAngles.x == 90 && _wordsState.currentState == _wordsState.selectState)
@@ -39,12 +34,6 @@ public class UIManager : MonoBehaviour
             {
                 words.GetComponent<Renderer>().materials[1].color = _wordsState.firstColor;
             }
-            /*
-            for (int i = 0; i < _wordsState.words.Count; i++)
-            {
-                _wordsState.words[i].GetComponent<Renderer>().materials[1].color = _wordsState.firstColor;
-            }
-            */
             _wordsState.inputWord.text = "";
             for (int i = 0; i < _wordsState.words.Count; i++)
             {
@@ -72,49 +61,22 @@ public class UIManager : MonoBehaviour
         }
         if (_wordsState.currentState == _wordsState.selectState && _newWord.Contains(inputWord.ToLower()))
         {
-            //for (int i = 0; i < lines.Length; i++)
-            //{
-            //    string[] words = lines[i].Split(',');
-            //    //newWords = new List<string>(words);
-            //    string word = words[i];
-            //    Debug.Log(word);
-            //    newWords.Add(word);
-            //}
-            //if (newWord.Contains(wordsState.inputWord.text.ToLower()))
-            //{
-            //    CamLook.cam.SecondPos();
-            //}
-            //skillActive = false;
-            if (buttonClick && snowGlobe.GetComponent<Image>().color == new Color(r:1, 1, 1, 0.5f))
+            if (buttonClick)
             {
+                snowGlobe.GetComponent<Button>().interactable = false;
                 skillActive = true;
                 buttonClick = false;
                 snowGlobe.GetComponent<Button>().onClick.RemoveAllListeners();
             }
             CamLook.cam.SecondPos();
         }
-        //for (int i = 0; i < wordsState.keyWord.Count; i++)
-        //{
-        //    if (wordsState.inputWord.text == wordsState.keyWord[i] && wordsState.currentState == wordsState.selectState)
-        //    {
-        //        //camLook.enabled = true;
-        //        //wordsState.SwitchState(wordsState.fillingState);
-        //        CamLook.cam.SecondPos();
-        //    }
-        //}
     }
     public void SnowGlobe()
     {
         if (_wordsState.currentState == _wordsState.selectState && skillActive == false)
         {
             buttonClick = !buttonClick;
-            //bool state = snowGlobe.activeSelf;
-            //snowGlobe.SetActive(!state);
             ColorChange();
-        }
-        else
-        {
-
         }
     }
     void ColorChange()
