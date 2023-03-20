@@ -91,7 +91,8 @@ public class UIManager : MonoBehaviour
         }
         else if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f))
         {
-            Destroy(snow);
+            Destroy(snow, 2f);
+            snow.GetComponent<ParticleSystem>().startSize = 0;
             snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         }
     }

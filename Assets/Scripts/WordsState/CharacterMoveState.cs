@@ -52,7 +52,8 @@ public class CharacterMoveState : WordsBaseState
         {
             words.firstGround = null;
             UIManager.uIManager.skillActive = false;
-            GameObject.Destroy(UIManager.uIManager.snow);
+            GameObject.Destroy(UIManager.uIManager.snow, 2f);
+            UIManager.uIManager.snow.GetComponent<ParticleSystem>().startSize = 0;
             words.SwitchState(words.snowGlobeState);
         }
         if (UIManager.uIManager.skillActive == false && _walking == false)
@@ -88,7 +89,8 @@ public class CharacterMoveState : WordsBaseState
             if (UIManager.uIManager.skillActive)
             {
                 UIManager.uIManager.skillActive = false;
-                GameObject.Destroy(UIManager.uIManager.snow);
+                GameObject.Destroy(UIManager.uIManager.snow, 2f);
+                UIManager.uIManager.snow.GetComponent<ParticleSystem>().startSize = 0;
                 words.SwitchState(words.snowGlobeState);
                 return;
             }
