@@ -400,7 +400,6 @@ MonoBehaviour:
   myWord: []
   ground: {fileID: 0}
   finishGround: {fileID: 1433476354}
-  snowEffect: {fileID: 9004440442427133017, guid: 5be699685b4e5bd418d657eaede56f8f, type: 3}
   agent: {fileID: 1580517835}
   point: {x: 0, y: 0, z: 0}
   polar: {fileID: 1580517832}
@@ -2541,7 +2540,7 @@ GameObject:
   - component: {fileID: 1421551294}
   - component: {fileID: 1421551293}
   m_Layer: 0
-  m_Name: Button
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2560,6 +2559,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowGlobe: {fileID: 348282757}
+  snowEffect: {fileID: 9004440442427133017, guid: 5be699685b4e5bd418d657eaede56f8f, type: 3}
+  snow: {fileID: 0}
   buttonClick: 0
   skillActive: 0
 --- !u!4 &1421551294

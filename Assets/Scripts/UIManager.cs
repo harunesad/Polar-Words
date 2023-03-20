@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     CamLook _camLook;
     WordsStateManager _wordsState;
     public GameObject snowGlobe;
+    public GameObject snowEffect;
+    public GameObject snow;
     string[] _lines;
     List<string> _newWord;
     public bool buttonClick;
@@ -83,10 +85,13 @@ public class UIManager : MonoBehaviour
     {
         if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 1))
         {
+            var snow = Instantiate(snowEffect, snowEffect.transform.position, Quaternion.identity);
+            this.snow = snow;
             snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
         }
         else if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f))
         {
+            Destroy(snow);
             snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         }
     }

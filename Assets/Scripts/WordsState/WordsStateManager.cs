@@ -13,7 +13,6 @@ public class WordsStateManager : MonoBehaviour
     public List<string> myWord;
     public GameObject ground;
     public GameObject finishGround;
-    public GameObject snowEffect;
     public NavMeshAgent agent;
     public Vector3 point;
     public GameObject polar;

@@ -15,7 +15,7 @@ public class CharacterMoveState : WordsBaseState
                 {
                     words.words[i].layer = 0;
                     words.iceWords.Add(words.words[i]);
-                    GameObject.Instantiate(words.snowEffect, words.words[i].transform.position + Vector3.up * 6.5f, Quaternion.identity);
+                    //GameObject.Instantiate(words.snowEffect, words.words[i].transform.position + Vector3.up * 6.5f, Quaternion.identity);
                 }
             }
             for (int i = words.words.Count - 1; i > 0; i--)
@@ -52,6 +52,7 @@ public class CharacterMoveState : WordsBaseState
         {
             words.firstGround = null;
             UIManager.uIManager.skillActive = false;
+            GameObject.Destroy(UIManager.uIManager.snow);
             words.SwitchState(words.snowGlobeState);
         }
         if (UIManager.uIManager.skillActive == false && _walking == false)
@@ -87,6 +88,7 @@ public class CharacterMoveState : WordsBaseState
             if (UIManager.uIManager.skillActive)
             {
                 UIManager.uIManager.skillActive = false;
+                GameObject.Destroy(UIManager.uIManager.snow);
                 words.SwitchState(words.snowGlobeState);
                 return;
             }
