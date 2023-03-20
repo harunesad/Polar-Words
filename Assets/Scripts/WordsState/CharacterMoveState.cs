@@ -15,6 +15,7 @@ public class CharacterMoveState : WordsBaseState
                 {
                     words.words[i].layer = 0;
                     words.iceWords.Add(words.words[i]);
+                    GameObject.Instantiate(words.snowEffect, words.words[i].transform.position + Vector3.up * 2, Quaternion.identity);
                 }
             }
             for (int i = words.words.Count - 1; i > 0; i--)

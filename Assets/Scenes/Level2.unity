@@ -400,6 +400,7 @@ MonoBehaviour:
   myWord: []
   ground: {fileID: 0}
   finishGround: {fileID: 1433476354}
+  snowEffect: {fileID: 9004440442427133017, guid: 5be699685b4e5bd418d657eaede56f8f, type: 3}
   agent: {fileID: 1580517835}
   point: {x: 0, y: 0, z: 0}
   polar: {fileID: 1580517832}
