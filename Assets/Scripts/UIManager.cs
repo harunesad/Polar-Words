@@ -78,19 +78,31 @@ public class UIManager : MonoBehaviour
         if (_wordsState.currentState == _wordsState.selectState && skillActive == false)
         {
             buttonClick = !buttonClick;
-            ColorChange();
+            //ColorChange();
+            if (snow != null)
+            {
+                Destroy(snow, 2f);
+                snow.GetComponent<ParticleSystem>().startSize = 0;
+            }
+            else
+            {
+                var snow = Instantiate(snowEffect, snowEffect.transform.position, Quaternion.identity);
+                this.snow = snow;
+            }
         }
     }
     void ColorChange()
     {
         if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 1))
         {
+            Debug.Log("s");
             var snow = Instantiate(snowEffect, snowEffect.transform.position, Quaternion.identity);
             this.snow = snow;
             snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
         }
         else if (snowGlobe.GetComponent<Image>().color == new Color(1, 1, 1, 0.5f))
         {
+            Debug.Log("a");
             Destroy(snow, 2f);
             snow.GetComponent<ParticleSystem>().startSize = 0;
             snowGlobe.GetComponent<Image>().color = new Color(1, 1, 1, 1);

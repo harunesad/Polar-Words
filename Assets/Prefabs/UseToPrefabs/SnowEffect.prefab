@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9004440442427133019}
   - component: {fileID: 9004440442427133016}
   m_Layer: 0
-  m_Name: Snow
+  m_Name: SnowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

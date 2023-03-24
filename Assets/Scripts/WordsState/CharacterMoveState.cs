@@ -81,11 +81,13 @@ public class CharacterMoveState : WordsBaseState
                 words.SwitchState(words.finishState);
                 return;
             }
+            words.agent.gameObject.GetComponent<Animator>().SetBool("Walk",true);
             words.agent.SetDestination(words.point);
         }
         Vector3 newPoint = new Vector3(words.point.x, words.polar.transform.position.y, words.point.z);
         if (Vector3.Distance(words.polar.transform.position, newPoint) < 0.1f)
         {
+            words.agent.gameObject.GetComponent<Animator>().SetBool("Walk",false);
             if (UIManager.uIManager.skillActive)
             {
                 UIManager.uIManager.skillActive = false;
