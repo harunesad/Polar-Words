@@ -78,6 +78,7 @@ public class CharacterMoveState : WordsBaseState
             }
             if (_clickObj.transform.parent.gameObject == words.finishGround)
             {
+                
                 words.agent.gameObject.GetComponent<Animator>().SetBool("Walk",true);
                 words.SwitchState(words.finishState);
                 return;

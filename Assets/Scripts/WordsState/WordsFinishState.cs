@@ -14,14 +14,18 @@ public class WordsFinishState : WordsBaseState
         {
             int levelId = SceneManager.GetActiveScene().buildIndex;
             int fishCount = GameObject.FindObjectsOfType<Collisions.FishCollision>().Length;
+            words.agent.gameObject.GetComponent<Animator>().SetBool("Walk", false);
+            //Json.JsonSave.json.so.levelFinish[levelId].levelState = true;
 
-            Json.JsonSave.json.so.levelFinish[levelId].levelState = true;
 
-            if (words.startFishCount > 0 && fishCount == 0)
-            {
-                Json.JsonSave.json.so.levelFinish[Json.JsonSave.json.so.fishLevel].fishState = true;
-            }
-            Json.JsonSave.json.Save();
+            // if (words.startFishCount > 0 && fishCount == 0)
+            //  {
+            //Json.JsonSave.json.so.levelFinish[Json.JsonSave.json.so.fishLevel].fishState = true;
+            //  }
+            // Json.JsonSave.json.Save();
         }
+       
     }
+
+
 }
