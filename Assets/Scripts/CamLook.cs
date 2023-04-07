@@ -13,7 +13,7 @@ public class CamLook : MonoBehaviour
     }
     public void FirstPos()
     {
-        Vector3 pos = new Vector3(0, 5, 0);
+        Vector3 pos = new Vector3(0, 5, -0.78f);
         transform.DOMove(pos, 2).SetEase(Ease.Linear);
         transform.DORotate(new Vector3(90, 0, 0), 2).SetEase(Ease.Linear).OnComplete(
         () =>
